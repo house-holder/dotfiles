@@ -32,19 +32,3 @@ hasCmd() {
     fi
 }
 
-if hasCmd "pydf"; then
-    alias df='pydf'
-else
-    echo "Command 'pydf' unavailable: check ~./bash_aliases"
-fi
-
-if hasCmd "lsd"; then
-    alias l='lsd -F --group-directories-first'
-    alias ls='lsd -F --group-directories-first'
-    alias la='lsd -FA --total-size --group-directories-first'
-    alias ll='lsd -lF --total-size --group-directories-first'
-    alias lal='lsd -lFA --total-size --group-directories-first'
-else
-    echo "Command 'lsd' unavailable: check ~./bash_aliases"
-fi
-

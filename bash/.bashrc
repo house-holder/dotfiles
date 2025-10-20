@@ -20,7 +20,9 @@ custom_path_add() {
     fi
 }
 
-custom_path_add "$HOME/.scripts"
+if [[ -f $HOME/.scripts ]]; then
+  custom_path_add "$HOME/.scripts"
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -93,8 +95,8 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash-aliases ]; then
+    . ~/.bash-aliases
 fi
 
 if ! shopt -oq posix; then
@@ -105,7 +107,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 FNM_PATH="$HOME/.local/share/fnm"
+
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   if command -v fnm >/dev/null 2>&1; then
@@ -113,10 +117,10 @@ if [ -d "$FNM_PATH" ]; then
   fi
 fi
 
-. "$HOME/.cargo/env"
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# . "$HOME/.cargo/env"
+#
+# # Generated for envman. Do not edit.
+# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 gac() {
     args=("$@")
@@ -249,7 +253,7 @@ function set_prompt() {
 }
 PROMPT_COMMAND=set_prompt
 
-custom_path_add "$HOME/.config/zigvm/current"
-custom_path_add "$HOME/go/bin"
-custom_path_add "/usr/local/go/bin"
+# custom_path_add "$HOME/.config/zigvm/current"
+# custom_path_add "$HOME/go/bin"
+# custom_path_add "/usr/local/go/bin"
 export EDITOR=nvim
