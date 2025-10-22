@@ -14,32 +14,27 @@ There are other install options I don't use. [Read the docs](https://www.gnu.org
 
 ### Setup:
 1) Create a dedicated config dir in your home (mine is `~/.dotfiles/`)
-2) `mv` relevant config files/dirs into `.dotfiles/`
-    - Note: I've placed the files inside their own respective "package" dirs, i.e.
-        - `~/.dotfiles/nvim/`
-        - `~/.dotfiles/bash/`
-        - etc.
+2) Create **packages** by making dedicated subdirs: `bash/`, `nvim/`, etc.
+2) `mv` relevant config files/dirs into the respective `.dotfiles/[subdir]/`
+  - NOTE: The subdir contains `$HOME`-level filestructure - so if your files normally reside in `.config/application/config/...` you'll need to recreate this structure: (see this repo's nvim config)
 3) `cd ~/.dotfiles/` *(or whatever you named it)*
-4) `stow .` to set up the symlinks
-
+4) Either run:
+  - `stow .` to distribute ALL symlinks (warning: I have overlapping configs! This will not work.)
+or
+  - `stow [package]` to distribute symlink for just that config group.
 
 
 That's it, pretty hassle free. When you make any config changes, commit and push them to your own remote - then enjoy pulling it down from anywhere you need a familiar and comfortable workspace.
 
 > [!WARNING]
-> If you want to copy these configs, you'll need access to:
-> > `bash`  
-> > `nvim`  
-> > `tmux`  
-> > `lsd`  
-> > `pydf`  
+> If you want to explore/use these configs, you'll need access to `bash`, `nvim`, and `tmux`
 > 
-> Some things may be hardcoded just to my absolute paths. Be warned!
+> Some things may be hardcoded to absolute paths. Be warned!
 >
 > But feel free to use anything interesting you find here.
 
 # Config Details
-I am mostly after tools that improve my (hobbyist, to be clear) workflow in a way that I feel is sensible. This includes a very [kickstart](https://github.com/nvim-lua/kickstart.nvim)-inspired modular Neovim config with some tweaks, a bit of a bash prompt overhaul with aliases, and my own `git` and `tmux` configs to keep things consistent.
+I am mostly after tools that improve my (hobbyist) workflow in a way that I feel is sensible. This includes a very [kickstart](https://github.com/nvim-lua/kickstart.nvim)-inspired modular Neovim config with some tweaks, a bit of a bash prompt overhaul with aliases, and my own `git` and `tmux` configs to keep things consistent.
 
 The good news: It doesn't have to be limited to these items, and can be expanded to whatever configurations you desire.
 
@@ -91,4 +86,4 @@ thanks for reading this far
 **bye**
 
 [^1]: FOSS forever  
-[^2]: Arch btw
+[^2]: Arch (btw)
