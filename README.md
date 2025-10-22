@@ -43,11 +43,11 @@ My basic bash prompt is just a multiline with coloring, and decorations that can
 
 Prompt format: `DD:HHMM.SS $USER(:pwd)(:git_branch)`
 
-![basic prompt](readme-assets/basic-prompt.jpg)
+![basic prompt](.local/readme-assets/basic-prompt.jpg)
 
 If I move into a `git` repo, the branch name will be displayed and color-coded based on the status of this branch with regard to commit history:
 
-![git prompt](readme-assets/git-prompt.jpg)
+![git prompt](.local/readme-assets/git-prompt.jpg)
 Notice after committing that "main" turns blue like my username and pwd. There isn't much more to my prompt besides that `prompt` command to toggle the special characters, and a venv flag if needed.
 
 ## Aliases

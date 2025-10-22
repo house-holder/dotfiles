@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ..l='cd .. && ll'
+alias ...l='cd ../.. && ll'
+alias ....l='cd ../../.. && ll'
+alias f='find . | grep '
+alias h='history | grep '
+alias gp="git push"
+alias gs="git status"
+alias pg="git pull origin "
+alias log="git log -10 --oneline --graph"
+alias log20="git log -20 --oneline --graph"
+alias logall="git log --oneline --graph"
+
+alias cfg.rc="nvim $HOME/.bashrc"
+alias cfg.alias="nvim $HOME/.bash_aliases"
+alias cfg.nvim="nvim $HOME/.config/nvim/"
+alias cfg.nvim.opts="nvim $HOME/.config/nvim/lua/options.lua"
+alias cfg.nvim.keys="nvim $HOME/.config/nvim/lua/keymaps.lua"
+alias cd.nvim="cd $HOME/.config/nvim/"
+alias cd.nvim.opts="cd $HOME/.config/nvim/lua/ && nvim options.lua"
+alias cd.nvim.keys="cd $HOME/.config/nvim/lua/ && nvim keymaps.lua"
+
+alias ll='eza -lh --group-directories-first --icons=auto'
+alias la='eza -lha --group-directories-first --icons=auto'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='eza -a --tree --level=2 --long --icons --git'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+# changedir fast access
+alias learn="custom_cd $HOME/personal/learning"
+alias bd="custom_cd $HOME/personal/learning/bootdev/"
+
+alias prompt='toggle_prompt'
+
+alias cd='zd'

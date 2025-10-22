@@ -1,4 +1,4 @@
-readme-assets/
+.git/
+.local/
 
-.git
 README.md

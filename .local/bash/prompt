@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+PROMPT_CFG="$HOME/.dotfiles/.local/bash/prompt.conf"
+
+load_prompt_config() {
+  if [[ -f "$PROMPT_CFG" ]]; then
+    source "$PROMPT_CFG"
+  else
+    export PROMPT_CHARS="special"
+  fi
+}
+
+save_prompt_config() {
+  echo "export PROMPT_CHARS=\"$PROMPT_CHARS\"" >"$PROMPT_CFG"
+  echo "Cfg file: $PROMPT_CFG"
+}
+
+toggle_prompt() {
+  if [[ "$PROMPT_CHARS" == "special" ]]; then
+    export PROMPT_CHARS="simple"
+    echo "Special prompt chars disabled"
+  else
+    export PROMPT_CHARS="special"
+    echo "Special prompt chars enabled - Nerd Font required"
+  fi
+
+  save_prompt_config
+  set_prompt
+}
+
+show_prompt_config() {
+  echo "Prompt chars: $PROMPT_CHARS"
+  echo "Config: $PROMPT_CFG"
+}
+
+if [[ -f "$HOME/.dotfiles/.local/bash/git_prompt" ]]; then
+  source "$HOME/.dotfiles/.local/bash/git_prompt"
+else
+  __git_ps1() { :; } # dummy fallback
+fi
+
+# core prompt builder
+set_prompt() {
+  local R="\[\e[0m\]"
+  local RED="${R}\[\e[1;31m\]"
+  local GRN="${R}\[\e[1;32m\]"
+  local BLU="${R}\[\e[1;34m\]"
+  local DGRN="${R}\[\e[1;2;32m\]"
+
+  local leadSym pSymbol
+  if [[ $PROMPT_CHARS == "special" ]]; then
+    leadSym="${GRN} 󰀝 "
+    pSymbol="${GRN}→ ${R}"
+  else
+    leadSym=" "
+    pSymbol="${GRN}> ${R}"
+  fi
+
+  local TIME USR SEP FRONT body gitPart
+  TIME="${DGRN}$(date +%d:%H%M.%S)${R}"
+  USR="${BLU}\u${R}"
+  SEP="${GRN}:"
+  FRONT="${TIME}${leadSym}${USR}"
+
+  if [ -n "$VIRTUAL_ENV" ]; then
+    body="($(basename "$VIRTUAL_ENV"))${FRONT}${SEP}${BLU}\W"
+  elif [ "$PWD" == "$HOME" ]; then
+    body="${FRONT}"
+  else
+    body="${FRONT}${SEP}${BLU}\W"
+  fi
+
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
+      gitPart=$(__git_ps1 "${GRN}:${RED}%s${R}")
+    else
+      gitPart=$(__git_ps1 "${GRN}:${BLU}%s${R}")
+    fi
+    PS1="${body}${gitPart}\n${pSymbol}"
+  else
+    PS1="${body}\n${pSymbol}"
+  fi
+}
+
+load_prompt_config
+
+if [[ -z "$PROMPT_COMMAND" ]]; then
+  PROMPT_COMMAND=set_prompt
+else
+  PROMPT_COMMAND="${PROMPT_COMMAND};set_prompt"
+fi
