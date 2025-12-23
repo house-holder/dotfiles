@@ -6,7 +6,12 @@ return {
       'nvim-lua/plenary.nvim',
     },
     opts = {
-      signs = false,
+      signs = true,
+      keywords = {
+        DEBUG = { icon = ' ', color = 'warning', alt = { 'DEBUG', '!!!' } },
+      },
+      merge_keywords = true,
     },
   },
 }
+

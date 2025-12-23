@@ -8,7 +8,7 @@ return {
       hl = 'FoldColumn', -- %# highlight group label, applies to each text element
       condition = { true }, -- table of booleans or functions returning a boolean
       fold = {
-        width = 3, -- current width of the fold column
+        width = 2, -- current width of the fold column
         -- 'fillchars' option values:
         close = '', -- foldclose
         open = '', -- foldopen
