@@ -11,7 +11,7 @@ vim.opt.showmode = false
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldlevel = 4
+vim.opt.foldlevel = 20
 
 --  See `:help 'clipboard'`
 vim.schedule(function()
