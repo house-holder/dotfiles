@@ -1,31 +1,13 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
-
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
-    -- Creates a beautiful debugger UI
-    'rcarriga/nvim-dap-ui',
-
-    -- Required dependency for nvim-dap-ui
-    'nvim-neotest/nvim-nio',
-
-    -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
+    'rcarriga/nvim-dap-ui', -- Creates a beautiful debugger UI
+    'nvim-neotest/nvim-nio', -- Required dependency for nvim-dap-ui
+    'williamboman/mason.nvim', -- Installs debug adapters for you
     'jay-babu/mason-nvim-dap.nvim',
-
-    -- Add your own debuggers here
-    'leoluz/nvim-dap-go',
+    'leoluz/nvim-dap-go', -- Add your own debuggers here
   },
-  keys = {
-    -- Basic debugging keymaps, feel free to change to your liking!
+  keys = { -- [[ Debug Keymaps ]] ----------------------------------------------
     {
       '<F5>',
       function()
@@ -68,8 +50,8 @@ return {
       end,
       desc = 'Debug: Set Breakpoint',
     },
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    {
+    { -- Toggle to see last session result. Need this
+      -- to see output following an unhandled exception
       '<F7>',
       function()
         require('dapui').toggle()
@@ -91,12 +73,8 @@ return {
       },
     }
 
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
-    dapui.setup {
-      -- Set icons to characters that are more likely to work in every terminal.
-      --    Feel free to remove or use ones that you like more! :)
-      --    Don't feel like these are good choices.
+    dapui.setup { -- :help nvim-dap-ui
+      -- icons here are selected for compatibility
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
@@ -113,7 +91,7 @@ return {
       },
     }
 
-    -- Change breakpoint icons
+    -- Change breakpoint icons,(disabled for undetermined reasons)
     -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
     -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
     -- local breakpoint_icons = vim.g.have_nerd_font
@@ -129,8 +107,7 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
-    require('dap-go').setup {
+    require('dap-go').setup { -- Go-specific config
       delve = {
         -- On Windows delve must be run attached or it crashes.
         -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring

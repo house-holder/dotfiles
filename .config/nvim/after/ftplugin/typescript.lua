@@ -1,0 +1,3 @@
+-- Highlight ${ in template literals
+-- vim.fn.matchadd('Special', '\\v`[^`]*\\zs\\$\\{')
+-- vim.fn.matchadd('Special', '\\v`[^`]*\\$\\{[^}]*\\zs\\}')

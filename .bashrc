@@ -265,7 +265,10 @@ custom_path_add "$HOME/go/bin"
 custom_path_add "/usr/local/go/bin"
 custom_path_add "/home/kh/.opencode/bin"
 export EDITOR=nvim
+export BAT_THEME="Nord"
 
 learn() {
     cd ~/personal/learn/"$1" || return
 }
+
+eval "$(starship init bash)"

@@ -1,5 +1,5 @@
--- [[ Configure and install plugins ]]
---
+-- [[ Plugin install & config ]] -----------------------------------------------
+
 require('lazy').setup({
   'ThePrimeagen/vim-be-good', -- vim motion games
   { import = 'custom' },
