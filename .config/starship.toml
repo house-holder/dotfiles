@@ -31,7 +31,7 @@ format = '[$user ](fg:#81a1c1 bg:#2e3440)'
 
 [directory]
 format = "[ $path ](fg:#d8dee9 bg:#3d4252)"
-truncation_length = 5
+truncation_length = 3
 truncation_symbol = "…/"
 truncate_to_repo = true
 
