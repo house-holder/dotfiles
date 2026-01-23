@@ -13,13 +13,13 @@ Update your package manager if needed, then:
 There are other install options I don't use. [Read the docs](https://www.gnu.org/software/stow/manual/stow.html#Introduction) to learn more.
 
 ### Setup:
-1) Create a dedicated config dir in your home (mine is `~/.dotfiles/`)
-2) `mv` relevant config files/dirs into `.dotfiles/`
+1) Create a dedicated config dir in your home (mine is `~/dotfiles/`)
+2) `mv` relevant config files/dirs into `dotfiles/`
     - Note: I've placed the files inside their own respective "package" dirs, i.e.
-        - `~/.dotfiles/nvim/`
-        - `~/.dotfiles/bash/`
+        - `~/dotfiles/nvim/`
+        - `~/dotfiles/bash/`
         - etc.
-3) `cd ~/.dotfiles/` *(or whatever you named it)*
+3) `cd ~/dotfiles/` *(or whatever you named it)*
 4) `stow .` to set up the symlinks
 
 
@@ -28,60 +28,22 @@ That's it, pretty hassle free. When you make any config changes, commit and push
 
 > [!WARNING]
 > If you want to copy these configs, you'll need access to:
-> > `bash`  
-> > `nvim`  
-> > `tmux`  
-> > `lsd`  
-> > `pydf`  
+> > `bash`
+> > `eza`
+> > `nvim`
+> > `pydf`
+> > `tmux`
 > 
-> Some things may be hardcoded just to my absolute paths. Be warned!
+> Some things may be hardcoded to my own unique absolute paths. Be warned!
 >
 > But feel free to use anything interesting you find here.
 
 # Config Details
-I am mostly after tools that improve my (hobbyist, to be clear) workflow in a way that I feel is sensible. This includes a very [kickstart](https://github.com/nvim-lua/kickstart.nvim)-inspired modular Neovim config with some tweaks, a bit of a bash prompt overhaul with aliases, and my own `git` and `tmux` configs to keep things consistent.
+I am mostly after tools that improve my (hobbyist, to be clear) workflow in a way that I feel is sensible. This includes a very [kickstart](https://github.com/nvim-lua/kickstart.nvim)-inspired modular Neovim config with some tweaks, plus other minor items.
 
 The good news: It doesn't have to be limited to these items, and can be expanded to whatever configurations you desire.
 
-## Bash Prompt
-My basic bash prompt is just a multiline with coloring, and decorations that can be toggled.
 
-Prompt format: `DD:HHMM.SS $USER(:pwd)(:git_branch)`
-
-![basic prompt](readme-assets/basic-prompt.jpg)
-
-If I move into a `git` repo, the branch name will be displayed and color-coded based on the status of this branch with regard to commit history:
-
-![git prompt](readme-assets/git-prompt.jpg)
-Notice after committing that "main" turns blue like my username and pwd. There isn't much more to my prompt besides that `prompt` command to toggle the special characters, and a venv flag if needed.
-
-## Aliases
-I use a few common aliases, like:
-> `..` → `cd ..`  
-`...` → `cd ../..`  
-`..l` → `cd .. && ls`  
-`f` → `find . | grep`  
-`h` → `history . | grep`
-
-And also a few git shortcuts:
-> `gp` → `git push`  
-`gs` → `git status`  
-`pg` → `git pull origin`  
-`log` → `git log -10 --oneline --graph`  
-`log20` → `git log -20 --oneline --graph`  
-`log40` → `git log -40 --oneline --graph`
-
-<br>
-...and centrally, the following add/commit function:
-
-`gac {...args} {"lastArg"}` → `git add {...args} commit -m {"lastArg"}`
-
-> [!TIP]
-> Takes any number of files/dirs before a string commit message
-
-
-Other functions exist like `prompt`, plus highly specific aliases to get into nvim or bash configs with short commands.
- 
 ## Summary
 
 Get excited about your dev environment, dive into configuring things for yourself, and know you can keep it all organized quite neatly and make it highly repeatable using `stow`.
