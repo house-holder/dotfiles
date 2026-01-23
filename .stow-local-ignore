@@ -1,4 +1,6 @@
-readme-assets/
+readme-assets
 
-.git
-README.md
+\.git
+\.gitignore
+
+README.*
