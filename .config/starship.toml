@@ -1,0 +1,88 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+$time\
+[](fg:#212733 bg:#2e3440)\
+$os$username\
+[](fg:#2e3440 bg:#3d4252)\
+$directory\
+[](fg:#3d4252 bg:#4c566a)\
+$git_branch\
+$git_status\
+[](fg:#4c566a)\
+\n$character"""
+
+
+[time]
+disabled = false
+time_format = "[%d] %R "
+format = '[$time](fg:#434c5e bg:#212733)'
+
+[os]
+disabled = false
+
+[username]
+disabled = false
+show_always = true
+format = '[$user ](fg:#81a1c1 bg:#2e3440)'
+# format = '[$user ](fg:#5e81ac bg:#2e3440)'
+
+[directory]
+format = "[ $path ](fg:#d8dee9 bg:#3d4252)"
+truncation_length = 5
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+[git_branch]
+symbol = ""
+format = '[ $symbol $branch ](fg:#a3be8c bg:#4c566a)'
+
+[git_status]
+format = '([ $all_status$ahead_behind ](bg:#4c566a))'
+
+# unique status formatters
+modified = "[!${count}](fg:#ebcb8b bg:#4c566a)"
+staged = "[+${count}](fg:#a3be8c bg:#4c566a)"
+untracked = "[?${count}](fg:#ebcb8b bg:#4c566a)"
+deleted = "[✘${count}](fg:#bf616a bg:#4c566a)"
+renamed = "[»${count}](fg:#ebcb8b bg:#4c566a)"
+stashed = "[$${count}](fg:#88c0d0 bg:#4c566a)"
+conflicted = "[=${count}](fg:#bf616a bg:#4c566a)"
+ahead = "[⇡${count}](fg:#88c0d0 bg:#4c566a)"
+behind = "[⇣${count}](fg:#88c0d0 bg:#4c566a)"
+diverged = "[⇕](fg:#88c0d0 bg:#4c566a)"
+
+[character]
+success_symbol = "[❯](bold #a3be8c)"
+error_symbol = "[❯](bold #bf616a)"
+
+[os.symbols]
+Arch = " "
+CentOS = " "
+Debian = "[  ](fg:#81a1c1 bg:#2e3440)"
+Linux = " "
+Mint = " "
+NixOS = " "
+Raspbian = " "
+Ubuntu = " "
+# Windows = "󰍲 "
+Windows = "[  ](fg:#5e81ac bg:#2e3440)"
+
+#2e3440  (0, BASE): Polar Night (text, carets, structure chars)
+#3d4252  (1, shade): background color i.e. status bar
+#434c5e  (2, shade): line highlighting in editor
+#4c566a  (3, shade): comments/invisibles/guide markers/disabled items
+#d8dee9  (4, BASE): text, variables, consts, attributes
+#e5e9f0  (5, shade): semi-light background/status bar
+#eceff4  (6, shade): punctuations, carets, structure, selection, BG, highlight
+#8fbcbb  (7, core): classes, types, doc tags
+#88c0d0  (8, core): primary UI elements, methods/functions, markup
+#81a1c1  (9, core): reserved support chars, keywords, operators
+#5e81ac (10, core): markup types, import/include/require, preprocessors
+#bf616a (11, colorful): errors, git/diff, linter marker
+#d08770 (12, colorful): annotations
+#ebcb8b (13, colorful): escape, regex, markup entities. warnings, git/diff.
+#a3be8c (14, colorful): strings, attribute values. UI success visualization
+#b48ead (15, colorful): numbers")")")")")")")")")"

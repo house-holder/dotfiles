@@ -28,6 +28,18 @@ alias aliases.nvim='nvim $HOME/.bash_aliases'
 alias options.nvim='nvim $HOME/.config/nvim/lua/options.lua'
 alias keybinds.nvim='nvim $HOME/.config/nvim/lua/keymaps.lua'
 
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+alias l='eza --group-directories-first'
+alias a='eza -a --group-directories-first'
+alias ls='eza --group-directories-first'
+alias ll='eza -lh --group-directories-first'
+alias la='eza -lha --group-directories-first --icons=auto --git'
+alias lt='eza --tree --long --level=3 --group-directories-first \
+	--icons --git -I ".git"'
+alias lta='eza -a --tree --long --level=3 --group-directories-first \
+	--icons --git -I ".git"'
+
 alias cd.cfg.nvim='cd $HOME/.config/nvim/'
 alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
 alias cd.keybinds.nvim='cd $HOME/.config/nvim/lua/ && nvim keymaps.lua'
@@ -44,18 +56,18 @@ else
     echo "Command 'pydf' unavailable: check ~./bash_aliases"
 fi
 
-if hasCmd "eza"; then
-	alias l='eza --group-directories-first'
-	alias a='eza -a --group-directories-first'
-	alias ls='eza --group-directories-first'
-	alias ll='eza -lh --group-directories-first'
-	alias la='eza -lha --group-directories-first --icons=auto --git'
-	alias lt='eza --tree --long --level=3 --group-directories-first \
-		--icons --git -I ".git"'
-	alias lta='eza -a --tree --long --level=3 --group-directories-first \
-		--icons --git -I ".git"'
-	alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
-else
-    echo "Command 'eza' unavailable"
-fi
+# if hasCmd 'eza'; then
+# 	alias l='eza --group-directories-first'
+# 	alias a='eza -a --group-directories-first'
+# 	alias ls='eza --group-directories-first'
+# 	alias ll='eza -lh --group-directories-first'
+# 	alias la='eza -lha --group-directories-first --icons=auto --git'
+# 	alias lt='eza --tree --long --level=3 --group-directories-first \
+# 		--icons --git -I ".git"'
+# 	alias lta='eza -a --tree --long --level=3 --group-directories-first \
+# 		--icons --git -I ".git"'
+# 	alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+# else
+#     echo "Command 'eza' unavailable"
+# fi
 
