@@ -1,3 +1,6 @@
+-------------------------------------------------------------------------------
+-- define commands to make nvim more fluid
+-------------------------------------------------------------------------------
 local e_cfg = 'e ~/.config/nvim/'
 local e_lua = e_cfg .. '/lua'
 local new_user_cmd = vim.api.nvim_create_user_command
@@ -12,13 +15,9 @@ new_auto_cmd('VimLeave', {
   command = 'set guicursor=a:ver100',
 })
 
--- NOTE: custom user commands
-new_user_cmd('Aliases', 'e ~/.bash_aliases', {
-  bang = true,
-  desc = 'Edit bash aliases',
-})
-
+-------------------------------------------------------------------------------
 -- 'Builtin' commands with more default-type needs
+-------------------------------------------------------------------------------
 new_user_cmd('Init', e_cfg .. 'init.lua', {
   bang = true,
   desc = 'Open init.lua',
@@ -58,4 +57,12 @@ new_user_cmd('Commands', e_lua .. 'commands.lua', {
 new_user_cmd('Plugins', e_lua .. 'lazy-plugins.lua', {
   bang = true,
   desc = 'Open lua/lazy-plugins.lua',
+})
+
+-------------------------------------------------------------------------------
+-- more unique/custom commands
+-------------------------------------------------------------------------------
+new_user_cmd('Aliases', 'e ~/.bash_aliases', {
+  bang = true,
+  desc = 'Edit bash aliases',
 })

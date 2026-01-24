@@ -15,6 +15,11 @@ return {
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        hide_hidden = false,
+        hide_dotfiles = false,
+        hide_gitignored = false,
+      },
       window = {
         width = 28,
         enable_preview = true,

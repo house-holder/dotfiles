@@ -1,5 +1,6 @@
--- [[ Plugin manager ]] :help lazy.nvim.txt ------------------------------------
-
+--------------------------------------------------------------------------------
+-- bootstrapper to bring lazy.nvim online
+--------------------------------------------------------------------------------
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

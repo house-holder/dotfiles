@@ -59,14 +59,14 @@ return {
     {
       'C-p',
       function()
-        harpoon:list():prev()
+        require('harpoon'):list():prev()
       end,
       desc = 'Harpoon prev',
     },
     {
       'C-n',
       function()
-        harpoon:list():next()
+        require('harpoon'):list():next()
       end,
       desc = 'Harpoon next',
     },

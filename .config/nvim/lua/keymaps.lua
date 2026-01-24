@@ -1,49 +1,30 @@
--- [[ Keymaps ]] ---------------------------------------------------------------
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
-  desc = 'Open diagnostic [Q]uickfix list',
-})
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
-  desc = 'Exit terminal mode',
-})
+--------------------------------------------------------------------------------
+-- Custom keymapping file
+--------------------------------------------------------------------------------
+local keymap = vim.keymap.set
+local vdsll = vim.diagnostic.setloclist
 
--- disable arrows
-vim.keymap.set('n', '<left>', '<cmd>echo "h"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "l"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "k"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "j"<CR>')
+keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
+keymap('n', '<leader>q', vdsll, { desc = 'Open diag [Q]uickfix list' })
+keymap('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
-  desc = 'Move focus to the left window',
-})
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', {
-  desc = 'Move focus to the right window',
-})
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', {
-  desc = 'Move focus to the lower window',
-})
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
-  desc = 'Move focus to the upper window',
-})
+keymap('n', '<left>', '<cmd>echo "h"<CR>')
+keymap('n', '<right>', '<cmd>echo "l"<CR>')
+keymap('n', '<up>', '<cmd>echo "k"<CR>')
+keymap('n', '<down>', '<cmd>echo "j"<CR>')
 
-vim.keymap.set('n', '<C-S-h>', '<C-w>H', {
-  desc = 'Move window to the left',
-})
-vim.keymap.set('n', '<C-S-l>', '<C-w>L', {
-  desc = 'Move window to the right',
-})
-vim.keymap.set('n', '<C-S-j>', '<C-w>J', {
-  desc = 'Move window to the lower',
-})
-vim.keymap.set('n', '<C-S-k>', '<C-w>K', {
-  desc = 'Move window to the upper',
-})
+keymap('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+keymap('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+keymap('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+keymap('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '-', '<CMD>Oil<CR>', {
-  desc = 'Open parent directory',
-})
+keymap('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+keymap('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+keymap('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+keymap('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
--- highlight to confirm yank
+keymap('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {
