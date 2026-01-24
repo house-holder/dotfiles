@@ -8,10 +8,20 @@ return {
     opts = {
       signs = true,
       keywords = {
-        DEBUG = { icon = ' ', color = 'warning', alt = { 'DEBUG', '!!!' } },
+        DEBUG = {
+          icon = ' ',
+          color = 'warning',
+          alt = {
+            'DEBUG',
+            '!!!',
+          },
+        },
+      },
+      gui_style = {
+        fg = 'BOLD',
+        bg = 'BOLD',
       },
       merge_keywords = true,
     },
   },
 }
-

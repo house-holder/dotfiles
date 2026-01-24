@@ -1,5 +1,4 @@
 -- [[ Keymaps ]] ---------------------------------------------------------------
-
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostic [Q]uickfix list',
@@ -8,7 +7,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
   desc = 'Exit terminal mode',
 })
 
--- disable arrows, gentle reminder
+-- disable arrows
 vim.keymap.set('n', '<left>', '<cmd>echo "h"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "l"<CR>')
 vim.keymap.set('n', '<up>', '<cmd>echo "k"<CR>')
@@ -44,7 +43,8 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', {
   desc = 'Open parent directory',
 })
 
-vim.api.nvim_create_autocmd('TextYankPost', { -- highlight confirms yank
+-- highlight to confirm yank
+vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {
     clear = true,
