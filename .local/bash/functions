@@ -22,6 +22,27 @@ custom_cd() { # path shortcutting (specifically for alias builds)
   fi
 }
 
+register_custom_cd() {
+  local alias_name="$1"
+  local base_dir="$2"
+
+  alias "$alias_name=custom_cd $base_dir"
+
+  eval "_custom_cd_${alias_name}_base='$base_dir'"
+  complete -F _custom_cd_complete "$alias_name"
+}
+
+_custom_cd_complete() {
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local cmd="${COMP_WORDS[0]}"
+
+  local base_var="_custom_cd_${cmd}_base"
+  local base_dir="${!base_var}"
+
+  local dirs=$(ls -d "$base_dir"/*/ 2>/dev/null | xargs -n1 basename)
+  COMPREPLY=($(compgen -W "$dirs" -- "$cur"))
+}
+
 zd() { # stock with omarchy
   if [ $# -eq 0 ]; then
     builtin cd ~ && return

@@ -5,7 +5,7 @@
 HISTSIZE=1000
 HISTFILESIZE=2000
 HISTCONTROL=ignoreboth
-shopt -s histappend checkwinsize globstar
+shopt -s autocd histappend checkwinsize globstar
 
 if ! shopt -oq posix; then
   for f in /usr/share/bash-completion/bash_completion /etc/bash_completion; do
@@ -29,7 +29,7 @@ fi
 # Modular Bash Config ======================================================
 CFG="$HOME/.dotfiles/.local/bash/"
 
-# NOTE: these are segregated and hardlined in .dotfiles due to the circular
+# NOTE: these are segregated and hard-lined in .dotfiles due to the circular
 # referencing created by trying to symlink them into .config/bash/ originally
 for file in functions prompt aliases; do
   if [[ -f "$CFG/$file" ]]; then
@@ -41,6 +41,8 @@ done
 
 export EDITOR=nvim
 export PATH
+
+eval "$(starship init bash)"
 
 # ==========================================================================
 # WARNING: this line begins all scripted auto-adds to the file; EDIT CAREFULLY

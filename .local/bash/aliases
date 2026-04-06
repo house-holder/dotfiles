@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+alias cd='zd'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -8,6 +9,8 @@ alias ...l='cd ../.. && ll'
 alias ....l='cd ../../.. && ll'
 alias f='find . | grep '
 alias h='history | grep '
+alias prompt='toggle_prompt' #custom
+
 alias gp="git push"
 alias gs="git status"
 alias pg="git pull origin "
@@ -30,10 +33,5 @@ alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='eza -a --tree --level=2 --long --icons --git'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
-# changedir fast access
-alias learn="custom_cd $HOME/personal/learning"
-alias bd="custom_cd $HOME/personal/learning/bootdev/"
-
-alias prompt='toggle_prompt'
-
-alias cd='zd'
+register_custom_cd "learn" "$HOME/work/learning"
+register_custom_cd "bdev" "$HOME/work/learning/bootdev/"
