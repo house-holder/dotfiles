@@ -16,7 +16,7 @@ $git_status\
 
 
 [time]
-disabled = false
+disabled = true
 time_format = "[%d] %R "
 format = '[$time](fg:#434c5e bg:#212733)'
 
