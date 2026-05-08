@@ -12,6 +12,8 @@ vim.opt.shiftwidth = 4 -- >> or << shifting
 vim.opt.softtabstop = 4
 vim.opt.breakindent = true -- line wrap to same indent level
 
+vim.opt.colorcolumn = '80,120'
+
 vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
