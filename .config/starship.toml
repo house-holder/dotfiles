@@ -3,8 +3,6 @@
 add_newline = false
 
 format = """
-$time\
-[](fg:#212733 bg:#2e3440)\
 $os$username\
 [](fg:#2e3440 bg:#3d4252)\
 $directory\
