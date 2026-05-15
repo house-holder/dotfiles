@@ -6,6 +6,13 @@ hasCmd() {
     fi
 }
 
+cd() {
+	builtin cd "$@"
+	if git rev-parse --git-dir &>/dev/null; then
+		git fetch
+	fi
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
