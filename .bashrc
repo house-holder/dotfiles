@@ -93,8 +93,6 @@ if [ -d "$FNM_PATH" ]; then
   fi
 fi
 
-. "$HOME/.cargo/env"
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
@@ -152,9 +150,14 @@ custom_path_add "/home/kh/.opencode/bin"
 
 export EDITOR=nvim
 export BAT_THEME="Nord"
+export PATH="$HOME/.local/bin:$PATH"
 
 learn() {
     cd ~/personal/learn/"$1" || return
 }
 
 eval "$(starship init bash)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

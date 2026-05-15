@@ -12,6 +12,9 @@ alias ....='cd ../../..'
 alias ..l='cd .. && ll'
 alias ...l='cd ../.. && ll'
 alias ....l='cd ../../.. && ll'
+
+alias bedtime='systemctl suspend'
+
 alias f='find . | grep '
 alias h='history | grep '
 
@@ -44,14 +47,4 @@ alias cd.cfg.nvim='cd $HOME/.config/nvim/'
 alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
 alias cd.keybinds.nvim='cd $HOME/.config/nvim/lua/ && nvim keymaps.lua'
 
-if hasCmd 'batcat'; then
-	alias cat='batcat'
-else
-	echo "Command 'batcat' unavailable"
-fi
-
-if hasCmd 'pydf'; then
-    alias df='pydf'
-else
-    echo "Command 'pydf' unavailable: check ~./bash_aliases"
-fi
+alias wx='pilot-bar-daemon switch'

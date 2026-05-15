@@ -21,15 +21,21 @@ format = '[$time](fg:#434c5e bg:#212733)'
 [os]
 disabled = false
 
+[os.symbols]
+Arch = "[  ](fg:#81a1c1 bg:#2e3440)"
+CentOS = " "
+Linux = " "
+Raspbian = " "
+Ubuntu = " "
+
 [username]
 disabled = false
 show_always = true
 format = '[$user ](fg:#81a1c1 bg:#2e3440)'
-# format = '[$user ](fg:#5e81ac bg:#2e3440)'
 
 [directory]
 format = "[ $path ](fg:#d8dee9 bg:#3d4252)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 truncate_to_repo = true
 
@@ -55,18 +61,6 @@ diverged = "[⇕](fg:#88c0d0 bg:#4c566a)"
 [character]
 success_symbol = "[❯](bold #a3be8c)"
 error_symbol = "[❯](bold #bf616a)"
-
-[os.symbols]
-Arch = " "
-CentOS = " "
-Debian = "[  ](fg:#81a1c1 bg:#2e3440)"
-Linux = " "
-Mint = " "
-NixOS = " "
-Raspbian = " "
-Ubuntu = " "
-# Windows = "󰍲 "
-Windows = "[  ](fg:#5e81ac bg:#2e3440)"
 
 #2e3440  (0, BASE): Polar Night (text, carets, structure chars)
 #3d4252  (1, shade): background color i.e. status bar

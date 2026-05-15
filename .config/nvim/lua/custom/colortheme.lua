@@ -1,6 +1,19 @@
 -- Tokyo Night Storm
 return {
-  { -- You can easily change to a different colorscheme.
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1098,
+  },
+  -- {
+  --   'shaunsingh/nord.nvim',
+  --   lazy = false,
+  --   priority = 1099,
+  --   config = function()
+  --     vim.g.nord_italic = false
+  --     vim.cmd 'colorscheme nord'
+  --   end,
+  -- },
+  {
     'folke/tokyonight.nvim',
     priority = 1100,
     config = function()
@@ -11,20 +24,7 @@ return {
           keywords = { italic = false },
         },
       }
-      vim.cmd.colorscheme 'tokyonight-storm'
+      vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 }
-
--- NORD
--- return {
---   {
---     'shaunsingh/nord.nvim',
---     lazy = false,
---     priority = 1100,
---     config = function()
---       vim.g.nord_italic = false
---       vim.cmd 'colorscheme nord'
---     end,
---   },
--- }
