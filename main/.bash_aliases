@@ -21,6 +21,7 @@ alias ...l='cd ../.. && ll'
 alias ....l='cd ../../.. && ll'
 
 alias bedtime='systemctl suspend'
+alias code='NVIM_APPNAME=nvim013 /home/kh/.local/bin/nvim-0-13-0'
 
 alias f='find . | grep '
 alias h='history | grep '
