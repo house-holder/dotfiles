@@ -13,6 +13,8 @@ vim.opt.softtabstop = 4
 vim.opt.breakindent = true -- line wrap to same indent level
 
 vim.opt.colorcolumn = '80,120'
+vim.opt.autoindent = true
+vim.opt.smartindent = false
 
 vim.opt.undofile = true
 vim.opt.ignorecase = true

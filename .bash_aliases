@@ -27,7 +27,7 @@ alias h='history | grep '
 
 alias gp="git push"
 alias gs="git status"
-alias pg="git pull origin "
+alias pull="git pull origin "
 alias log="git log -10 --oneline --graph"
 alias log20="git log -20 --oneline --graph"
 alias log40="git log -40 --oneline --graph"
