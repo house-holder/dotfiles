@@ -23,6 +23,7 @@ disabled = false
 
 [os.symbols]
 Arch = "[  ](fg:#81a1c1 bg:#2e3440)"
+Debian = "[  ](fg:#81a1c1 bg:#2e3440)"
 CentOS = " "
 Linux = " "
 Raspbian = " "
