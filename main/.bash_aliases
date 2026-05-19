@@ -56,3 +56,9 @@ alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
 alias cd.keybinds.nvim='cd $HOME/.config/nvim/lua/ && nvim keymaps.lua'
 
 alias wx='pilot-bar-daemon switch'
+
+if hasCmd 'batcat'; then
+	alias bat='batcat'
+else
+	echo "Command 'batcat' unavailable"
+fi
