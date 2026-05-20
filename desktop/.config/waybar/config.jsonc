@@ -1,0 +1,160 @@
+{
+	"layer": "top",
+	"output": "DP-3",
+
+	"modules-left": [
+		"pulseaudio",
+		"hyprland/workspaces",
+		"custom/wx"
+	],
+	"modules-center": [
+		"clock#date",
+		"clock#local",
+		"custom/zulu",
+	],
+	"modules-right": [
+		"custom/timer",
+		"memory",
+		"network",
+	],
+
+	"pulseaudio": {
+		"format": "{volume} {icon}",
+		"tooltip": false,
+		"on-click": "pavucontrol",
+		"on-click-right": "pamixer -t",
+		"scroll-step": 5,
+		"format-muted": "{volume} 󰸈",
+		"format-icons": {
+			"headphone": "",
+			"headset": "",
+			"default": "󰕿",
+		}
+	},
+
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 100,
+		"orientation": "vertical"
+	},
+
+	"clock#date": {
+		"format": "[{:L%a/%d}]",
+	},
+	"clock#local": {
+		"format": "{:%H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode"          : "month",
+			"mode-mon-col"  : 3,
+			"weeks-pos"     : "left",
+			"on-scroll"     : 1,
+			"on-click-right": "mode",
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+
+	"custom/zulu": {
+		"exec": "~/.config/waybar/scripts/world-times.sh",
+		"return-type": "json",
+		"interval": 10,
+		"class": "clock"
+	},
+
+	"custom/wx": {
+		"exec": "/home/kh/.local/bin/pilot-bar-daemon && /home/kh/.local/bin/pilot-bar",
+		"return-type": "json",
+		"format": "{}",
+		"interval": 60,
+		"signal": 8,
+		"tooltip": true
+	},
+
+	"custom/timer": {
+		"exec": "timer status",
+		"interval": 1,
+		"return-type": "json",
+		"on-click": "timer toggle",
+		"tooltip": true
+	},
+
+	"cpu": {
+		"interval": 1,
+		"format": "{}%  ",
+		"max-length": 10
+	},
+
+	"memory": {
+		"interval": 1,
+		"format": " {used:0.2f}G",
+		"max-length": 10
+	},
+
+	"network": {
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"format": "{icon}",
+		"format-wifi": "{icon}",
+		"format-ethernet": "󰀂",
+		"format-disconnected": "󰤮",
+		"tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-disconnected": "Disconnected",
+		"interval": 3,
+		"spacing": 1,
+	  },
+
+	// "network": {
+	// 	"format-wifi": "{essid} ",
+	// 	"format-ethernet": "󰈁",
+	// 	"format-disabled": "",
+	// 	"format-disconnected": "(disconnected)",
+	// 	"tooltip-format": "name = {ifname}"
+	// },
+
+	"load": {
+		"interval": 10,
+		"format": "load: {load1}",
+		"max-length": 10
+	},
+
+	"temperature": {
+		"format": "{temperatureC}°C",
+	},
+
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"format": "{icon}",
+		"format-icons": {
+			"default": "",
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"10": "0",
+			"active": "󱓻"
+		},
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+		}
+	},
+}

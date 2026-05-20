@@ -1,0 +1,19 @@
+# font-family = CaskaydiaCove Nerd Font
+font-family = Lilex Nerd Font Mono
+font-size = 18
+
+window-padding-x = 4
+window-padding-y = 4
+
+background-opacity = 0.75
+background-blur = true
+
+window-decoration = auto
+
+theme = TokyoNight Night
+# theme = Nord
+cursor-style = bar
+cursor-style-blink = false
+cursor-click-to-move = true
+
+mouse-hide-while-typing = true
