@@ -21,7 +21,7 @@ alias ...l='cd ../.. && ll'
 alias ....l='cd ../../.. && ll'
 
 alias bedtime='systemctl suspend'
-alias code='NVIM_APPNAME=nvim013 /home/kh/.local/bin/nvim-0-13-0'
+alias code='NVIM_APPNAME=nvim /home/kh/.local/bin/nvim-0-13-0'
 
 alias f='find . | grep '
 alias h='history | grep '
@@ -56,9 +56,3 @@ alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
 alias cd.keybinds.nvim='cd $HOME/.config/nvim/lua/ && nvim keymaps.lua'
 
 alias wx='pilot-bar-daemon switch'
-
-if hasCmd 'batcat'; then
-	alias bat='batcat'
-else
-	echo "Command 'batcat' unavailable"
-fi

@@ -1,7 +1,5 @@
-print 'Loaded ft=Go'
-
 -- Neovim options -------------------------------------------------------------
-vim.opt_local.expandtab = false
+-- vim.opt_local.expandtab = false
 
 -- Highlighting ---------------------------------------------------------------
 vim.api.nvim_set_hl(0, 'FmtSpecifier', { fg = '#0db9d7' })
