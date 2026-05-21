@@ -1,4 +1,4 @@
-hasCmd() {
+function hasCmd() {
     if command -v "$1" &>/dev/null; then
         return 0
     else
@@ -6,12 +6,14 @@ hasCmd() {
     fi
 }
 
-cd() {
+function cd() {
 	builtin cd "$@"
 	if git rev-parse --git-dir &>/dev/null; then
 		git fetch
 	fi
 }
+
+exclude='node_modules|.git|.cache|dist|build|target|__pycache__|.venv|venv'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -23,8 +25,8 @@ alias ....l='cd ../../.. && ll'
 alias bedtime='systemctl suspend'
 alias code='NVIM_APPNAME=nvim /home/kh/.local/bin/nvim-0-13-0'
 
-alias f='find . | grep '
-alias h='history | grep '
+alias f="find . | grep "
+alias h="history | grep "
 
 alias gp="git push"
 alias gs="git status"
@@ -41,15 +43,21 @@ alias keybinds.nvim='nvim $HOME/.config/nvim/lua/keymaps.lua'
 
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
-alias l='eza --group-directories-first'
-alias a='eza -a --group-directories-first'
 alias ls='eza --group-directories-first'
 alias ll='eza -lh --group-directories-first'
 alias la='eza -lha --group-directories-first --icons=auto --git'
-alias lt='eza --tree --long --level=3 --group-directories-first \
-	--icons --git -I ".git"'
-alias lta='eza -a --tree --long --level=3 --group-directories-first \
-	--icons --git -I ".git"'
+
+function lt() {
+    local depth="${1:-2}"
+	eza --tree --icons=auto --git --group-directories-first \
+		--level="$depth" -I "${exclude}" "${@:2}"
+}
+
+function lta() {
+    local depth="${1:-2}"
+	eza -a --long --tree --icons=auto --git --group-directories-first \
+		--level="$depth" -I "${exclude}" "${@:2}"
+}
 
 alias cd.cfg.nvim='cd $HOME/.config/nvim/'
 alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
