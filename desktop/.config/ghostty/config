@@ -17,3 +17,5 @@ cursor-style-blink = false
 cursor-click-to-move = true
 
 mouse-hide-while-typing = true
+
+shell-integration-features = ssh-env,ssh-terminfo
