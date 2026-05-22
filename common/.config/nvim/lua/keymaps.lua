@@ -4,6 +4,8 @@
 local keymap = vim.keymap.set
 local vdsll = vim.diagnostic.setloclist
 
+keymap('n', 'zp', 'za', { desc = 'Toggle fold' })
+
 keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
 keymap('n', '<leader>q', vdsll, { desc = 'Open diag [Q]uickfix list' })
 keymap('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

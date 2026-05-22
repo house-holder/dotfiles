@@ -25,12 +25,12 @@ return {
       },
       indent = {
         enable = true,
-        disable = {
-          'ruby',
-          'javascript',
-          'c',
-          'cpp',
-        },
+        -- disable = {
+        --   'ruby',
+        --   'javascript',
+        --   'c',
+        --   'cpp',
+        -- },
       },
     },
   },

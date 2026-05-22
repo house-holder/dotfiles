@@ -1,9 +1,20 @@
--- Tokyo Night Storm
 return {
-  {
-    'rebelot/kanagawa.nvim',
-    priority = 1098,
-  },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   lazy = false,
+  --   priority = 1001,
+  --   config = function()
+  --     vim.cmd.colorscheme 'kanagawa'
+  --   end,
+  -- },
+  -- {
+  --   'tahayvr/matteblack.nvim',
+  --   lazy = false,
+  --   priority = 1003,
+  --   config = function()
+  --     vim.cmd.colorscheme 'matteblack'
+  --   end,
+  -- },
   -- {
   --   'shaunsingh/nord.nvim',
   --   lazy = false,
@@ -15,9 +26,8 @@ return {
   -- },
   {
     'folke/tokyonight.nvim',
-    priority = 1100,
+    priority = 1099,
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
         styles = {
           comments = { italic = false },

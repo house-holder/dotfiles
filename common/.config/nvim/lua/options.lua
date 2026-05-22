@@ -27,8 +27,9 @@ vim.opt.mouse = 'a' -- enabled for all
 vim.opt.showmode = false
 
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 20
+vim.opt.foldlevelstart = 20
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true
