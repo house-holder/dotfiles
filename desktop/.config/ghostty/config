@@ -1,21 +1,20 @@
-# font-family = CaskaydiaCove Nerd Font
+font-size = 16
 font-family = Lilex Nerd Font Mono
-font-size = 18
 
-window-padding-x = 4
-window-padding-y = 4
-
-background-opacity = 0.75
-background-blur = true
-
+theme = TokyoNight Moon
+window-padding-x = 5
+window-padding-y = 5
 window-decoration = auto
 
-theme = TokyoNight Night
-# theme = Nord
+background = 1a1b26
+background-blur = 16
+background-opacity = 0.85
+
 cursor-style = bar
 cursor-style-blink = false
 cursor-click-to-move = true
 
 mouse-hide-while-typing = true
-
 shell-integration-features = ssh-env,ssh-terminfo
+
+keybind = super+shift+t=new_tab

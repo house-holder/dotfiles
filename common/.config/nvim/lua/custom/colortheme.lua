@@ -1,4 +1,25 @@
 return {
+  {
+    'folke/tokyonight.nvim',
+    priority = 1099,
+    config = function()
+      require('tokyonight').setup {
+        styles = {
+          keywords = {
+            italic = false,
+            -- bold = true,
+          },
+          functions = {
+            -- bold = true,
+          },
+          variables = {},
+          floats = 'normal',
+          sidebars = 'dark',
+        },
+      }
+      vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
   -- {
   --   'rebelot/kanagawa.nvim',
   --   lazy = false,
@@ -24,17 +45,4 @@ return {
   --     vim.cmd 'colorscheme nord'
   --   end,
   -- },
-  {
-    'folke/tokyonight.nvim',
-    priority = 1099,
-    config = function()
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-        },
-      }
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
-  },
 }

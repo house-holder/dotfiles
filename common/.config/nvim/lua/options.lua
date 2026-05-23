@@ -8,7 +8,7 @@ end)
 vim.opt.expandtab = false
 vim.opt.smarttab = true
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4 -- >> or << shifting
+vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.breakindent = true -- line wrap to same indent level
 

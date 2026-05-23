@@ -22,12 +22,4 @@ vim.filetype.add {
     ['.*nginx.*%.conf'] = 'nginx',
   },
 }
-
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { 'cpp', 'c', 'javascript' },
---   callback = function()
---     vim.opt_local.indentexpr = ''
---   end,
--- })
-
 vim.g.init_load_complete = true
