@@ -13,8 +13,6 @@ function cd() {
 	fi
 }
 
-exclude='node_modules|.git|.cache|dist|build|target|__pycache__|.venv|venv'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -47,6 +45,8 @@ alias ls='eza --group-directories-first'
 alias ll='eza -lh --group-directories-first'
 alias la='eza -lha --group-directories-first --icons=auto --git'
 
+exclude='node_modules|.git|.cache|dist|build|target|__pycache__|.venv|venv'
+
 function lt() {
     local depth="${1:-2}"
 	eza --tree --icons=auto --git --group-directories-first \
@@ -62,5 +62,3 @@ function lta() {
 alias cd.cfg.nvim='cd $HOME/.config/nvim/'
 alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
 alias cd.keybinds.nvim='cd $HOME/.config/nvim/lua/ && nvim keymaps.lua'
-
-alias wx='pilot-bar-daemon switch'

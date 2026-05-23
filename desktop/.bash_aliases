@@ -46,10 +46,20 @@ alias a='eza -a --group-directories-first'
 alias ls='eza --group-directories-first'
 alias ll='eza -lh --group-directories-first'
 alias la='eza -lha --group-directories-first --icons=auto --git'
-alias lt='eza --tree --long --level=3 --group-directories-first \
-	--icons --git -I ".git"'
-alias lta='eza -a --tree --long --level=3 --group-directories-first \
-	--icons --git -I ".git"'
+
+exclude='node_modules|.git|.cache|dist|build|target|__pycache__|.venv|venv'
+
+function lt() {
+    local depth="${1:-2}"
+	eza --tree --icons=auto --git --group-directories-first \
+		--level="$depth" -I "${exclude}" "${@:2}"
+}
+
+function lta() {
+    local depth="${1:-2}"
+	eza -a --long --tree --icons=auto --git --group-directories-first \
+		--level="$depth" -I "${exclude}" "${@:2}"
+}
 
 alias cd.cfg.nvim='cd $HOME/.config/nvim/'
 alias cd.options.nvim='cd $HOME/.config/nvim/lua/ && nvim options.lua'
