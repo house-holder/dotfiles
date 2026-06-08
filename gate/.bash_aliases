@@ -50,13 +50,13 @@ alias la='eza -lha --group-directories-first --icons=auto --git'
 exclude='node_modules|.git|.cache|dist|build|target|__pycache__|.venv|venv'
 
 function lt() {
-    local depth="${1:-2}"
+    local depth="${1:-4}"
 	eza --tree --icons=auto --git --group-directories-first \
 		--level="$depth" -I "${exclude}" "${@:2}"
 }
 
 function lta() {
-    local depth="${1:-2}"
+    local depth="${1:-4}"
 	eza -a --long --tree --icons=auto --git --group-directories-first \
 		--level="$depth" -I "${exclude}" "${@:2}"
 }

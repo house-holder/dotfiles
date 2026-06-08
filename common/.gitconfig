@@ -1,7 +1,34 @@
 [user]
     name = kh
     email = kylemhouseholder@gmail.com
-[core]
-    editor = nvim
+
 [init]
     defaultBranch = main
+
+[core]
+    editor = nvim
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+
+[push]
+	followTags = true
+
+[commit]
+	verbose = true
+
+[rebase]
+	autostash = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[alias]
+	br = branch
+	ds = diff --staged
+	amend = commit --amend
+	unstage = reset HEAD --

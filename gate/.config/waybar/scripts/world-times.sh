@@ -11,4 +11,4 @@ tooltip+="${jfk} (JFK)\\n"
 tooltip+="${hnl} (HNL)"
 
 # remember: json
-echo "{\"text\":\"[${zulu}z] \", \"tooltip\":\"${tooltip}\"}"
+echo "{\"text\":\" ${zulu}z\", \"tooltip\":\"${tooltip}\"}"

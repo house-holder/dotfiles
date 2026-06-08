@@ -1,22 +1,15 @@
 {
+	"reload_style_on_change": true,
 	"layer": "top",
 	"output": "DP-3",
+	"position": "top",
+	"fixed-center": true,
+	"spacing": 0,
+	"height": 44,
 
-	"modules-left": [
-		"pulseaudio",
-		"hyprland/workspaces",
-		"custom/wx"
-	],
-	"modules-center": [
-		"clock#date",
-		"clock#local",
-		"custom/zulu",
-	],
-	"modules-right": [
-		"custom/timer",
-		"memory",
-		"network",
-	],
+	"modules-left": [ "pulseaudio", "hyprland/workspaces", "custom/wx" ],
+	"modules-center": [ "clock#date", "clock#local", "custom/zulu" ],
+	"modules-right": [ "cpu", "memory", "network" ],
 
 	"pulseaudio": {
 		"format": "{volume} {icon}",
@@ -28,18 +21,12 @@
 		"format-icons": {
 			"headphone": "",
 			"headset": "",
-			"default": "󰕿",
+			"default": "󰕿"
 		}
 	},
 
-	"pulseaudio/slider": {
-		"min": 0,
-		"max": 100,
-		"orientation": "vertical"
-	},
-
 	"clock#date": {
-		"format": "[{:L%a/%d}]",
+		"format": "{:L%a/%d}"
 	},
 	"clock#local": {
 		"format": "{:%H:%M}",
@@ -78,22 +65,22 @@
 		"exec": "/home/kh/.local/bin/pilot-bar-daemon && /home/kh/.local/bin/pilot-bar",
 		"return-type": "json",
 		"format": "{}",
-		"interval": 60,
+		"interval": 10,
 		"signal": 8,
 		"tooltip": true
 	},
 
-	"custom/timer": {
-		"exec": "timer status",
-		"interval": 1,
+	"custom/tmr": {
+		"exec": "~/.config/waybar/scripts/timer status",
+		"interval": 36,
 		"return-type": "json",
-		"on-click": "timer toggle",
+		"on-click": "~/.config/waybar/scripts/timer toggle",
 		"tooltip": true
 	},
 
 	"cpu": {
-		"interval": 1,
-		"format": "{}%  ",
+		"interval": 3,
+		"format": "{usage:2}% ",
 		"max-length": 10
 	},
 
@@ -107,22 +94,14 @@
 		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"format": "{icon}",
 		"format-wifi": "{icon}",
-		"format-ethernet": "󰀂",
+		"format-ethernet": "{ipaddr} 󰌘",
 		"format-disconnected": "󰤮",
 		"tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 		"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 		"tooltip-format-disconnected": "Disconnected",
 		"interval": 3,
-		"spacing": 1,
-	  },
-
-	// "network": {
-	// 	"format-wifi": "{essid} ",
-	// 	"format-ethernet": "󰈁",
-	// 	"format-disabled": "",
-	// 	"format-disconnected": "(disconnected)",
-	// 	"tooltip-format": "name = {ifname}"
-	// },
+		"spacing": 1
+	},
 
 	"load": {
 		"interval": 10,
@@ -131,7 +110,7 @@
 	},
 
 	"temperature": {
-		"format": "{temperatureC}°C",
+		"format": "{temperatureC}°C"
 	},
 
 	"hyprland/workspaces": {
@@ -155,6 +134,8 @@
 			"1": [],
 			"2": [],
 			"3": [],
+			"4": [],
+			"5": []
 		}
 	},
 }

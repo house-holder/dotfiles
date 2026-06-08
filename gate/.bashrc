@@ -162,3 +162,4 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+. "$HOME/.cargo/env"

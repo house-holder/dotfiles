@@ -11,3 +11,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+. "$HOME/.cargo/env"
