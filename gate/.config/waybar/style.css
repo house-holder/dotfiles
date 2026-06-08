@@ -1,6 +1,7 @@
 * {
 	border: none;
-	font-family: "JetBrainsMono Nerd Font";
+	/* font-family: "JetBrainsMono Nerd Font"; */
+	font-family: "Lilex Nerd Font Mono";
 	color: #565f89;
 	font-size: 18px;
 	min-height: 40px;
@@ -12,7 +13,7 @@
 }
 
 .modules-right {
-	margin-right: 15px;
+	margin-right: 5px;
 }
 
 .modules-center {
@@ -61,21 +62,22 @@ tooltip label {
 #clock {
 	color: #9aa5ce; /* #7dcfff; */
 	font-size: 28px;
-	font-weight: 600;
+	font-weight: 500;
 	font-family: mono;
 	padding: 0px 0px 0px 2px;
+	margin-left: 6px;
 }
 
 #clock.date, #custom-zulu {
 	color: #565f89;
-	padding: 0px 25px 0px 26px;
+	padding: 0px 25px 0px 20px;
 	font-size: 20px;
 	font-weight: 400;
 }
 
 #temperature, #cpu, #memory {
 	font-size: 16px;
-	margin: 0 10px;
+	margin: 0 5px;
 }
 
 #temperature {
@@ -85,7 +87,7 @@ tooltip label {
 
 #cpu {
 	color: #9ece6a;
-	margin-right: 15px;
+	margin-right: 10px;
 }
 
 #memory {
