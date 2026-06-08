@@ -1,5 +1,4 @@
-format = """$username$hostname:$directory\
-( \\[$git_branch( $git_status)\\])$character"""
+format = """$username$hostname:$directory${git_branch}${git_status}$character"""
 add_newline = false
 
 [username]
@@ -14,15 +13,16 @@ format = "[@$hostname](fg:#6a6fb1)"
 [directory]
 format = "[$path](fg:#a4aed6)"
 truncation_length = 3
-truncation_symbol = ""
+truncation_symbol = "…/"
 truncate_to_repo = true
 
 [git_branch]
 symbol = ""
-format = "[$symbol$branch](fg:#a3be8c)"
+format = " \\[[$symbol$branch](fg:#a3be8c)"
 
 [git_status]
-format = "[$all_status$ahead_behind](fg:#d8dee9)"
+# format = "[$all_status$ahead_behind](fg:#d8dee9)"
+format = "( [$all_status](fg:#d8dee9)( [ $ahead_behind](fg:#88c0d0)))\\]"
 modified = "[!${count}](fg:#ebcb8b)"
 staged = "[+${count}](fg:#a3be8c)"
 untracked = "[?${count}](fg:#ebcb8b)"
