@@ -1,0 +1,122 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background: rgba(26, 27, 38, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: @foreground;
+  border: none;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+}
+
+.modules-left {
+  margin-left: 8px;
+  margin-right: 15px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#workspaces {
+  margin: 0 5px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  min-width: 5px;
+}
+
+#workspaces button.empty {
+  opacity: 0.15;
+}
+
+#custom-wx {
+  font-family: mono;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#custom-timer {
+	color: #283853;
+  margin-left: 15px;
+}
+
+#clock {
+	/* color: #7dcfff; */
+	color: #9aa5ce;
+	font-size: 30px;
+	font-weight: 700;
+  padding: 0 15px;
+}
+
+#clock.date, #custom-zulu {
+	color: #565f89;
+  padding: 2 25 0 25px;
+	font-family: mono;
+	font-size: 24px;
+	font-weight: 800;
+}
+
+#temperature, #cpu, #memory {
+	font-size: 18px;
+}
+
+#temperature {
+	color: #3e4563;
+  margin-right: 8px;
+}
+
+#cpu {
+	color: #9ece6a;
+  margin-right: 12px;
+}
+
+#memory {
+	color: #3e4563;
+}
+
+#pulseaudio,
+#custom-omarchy,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#bluetooth {
+	color: #565fd2;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+#network {
+	color: #565fd2;
+  margin-right: 12px;
+}
+
+#custom-wx.vfr {
+	color: #9ece6a;
+}
+#custom-wx.mvfr {
+  color: #0080ff;
+}
+#custom-wx.ifr {
+  color: #ff0000;
+}
+#custom-wx.lifr {
+  color: #ff00ff;
+}
+
+tooltip {
+  padding: 0px;
+}
+
+#custom-update {
+  font-size: 20px;
+}
+
+.hidden {
+  opacity: 0.9;
+}

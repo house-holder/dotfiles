@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+LOG="$HOME/.timer_log"
+
+last() { tail -n 1 "$LOG" 2>/dev/null || echo ""; }
+running() { [[ "$(last)" == *, ]]; }
+timestamp() { lc=$(date +"%d%b"); date +"(%H%M %a/${lc^^})"; }
+
+start() {
+	last_ts=$(last)
+	if running; then
+		start_ts="${last_ts%,}"
+		elapsed=$(( EPOCHSECONDS - start_ts ))
+		h=$(( elapsed / 3600 )); m=$(( (elapsed % 3600) / 60 ))
+		echo "timer already running — started ${h}hr ${m}min ago"
+		exit 1
+	fi
+	echo -n "${EPOCHSECONDS}," >> "$LOG"
+	echo "timer started"
+}
+
+stop() {
+	last_ts=$(last)
+	if ! running; then
+		echo "no timer running — use \`timer start\` to start"; exit 1
+	fi
+
+	start_ts="${last_ts%,}"
+	elapsed=$(( EPOCHSECONDS - start_ts ))
+	hrs_d=$(awk "BEGIN { printf \"%.2f\", $elapsed / 3600 }")
+	echo "${EPOCHSECONDS} ${hrs_d}h $(timestamp)" >> "$LOG"
+
+	printf "%02d:%02d:%02d (%s hrs)\n" $(( elapsed / 3600 )) \
+		$(( (elapsed % 3600) / 60 )) $(( elapsed % 60 )) "$hrs_d"
+}
+
+status() {
+	last_ts=$(last)
+	local icon tooltip
+
+	last_complete=$(grep ',' "$LOG" 2>/dev/null | grep -v ',$' | tail -n 1)
+
+	if [[ -n "$last_complete" ]]; then
+		s_ts="${last_complete%%,*}"
+		rest="${last_complete#*,}"
+		e_ts="${rest%% *}"
+		elapsed=$(( e_ts - s_ts ))
+		hrs=$(awk "BEGIN { printf \"%.2f\", $elapsed / 3600 }")
+		stop_t=$(date -d "@$e_ts" "+%H:%M" 2>/dev/null || date -r "@$e_ts" \
+			"+%H:%M")
+		session_line=$(printf "Last: %02d:%02d:%02d (%s hrs) @ %s" \
+			$(( elapsed / 3600 )) $(( (elapsed % 3600) / 60 )) \
+			$(( elapsed % 60 )) "$hrs" "$stop_t")
+	else
+		session_line="No completed sessions yet"
+	fi
+
+	if running; then
+		start_ts="${last_ts%,}"
+		start_t=$(date -d "@$start_ts" "+%H:%M" 2>/dev/null || date -r \
+			"$start_ts" "+%H:%M")
+		active_elapsed=$(( EPOCHSECONDS - start_ts ))
+		active_hrs=$(awk "BEGIN { printf \"%.2f\", $active_elapsed / 3600 }")
+		icon="${active_hrs} ⏹   "
+		header="Timer active (started at ${start_t})"
+	else
+		icon="${hrs}⏵   "; header=""
+	fi
+
+	if [[ -n "$header" ]]; then
+		tooltip="${header}\n${session_line}"
+	else
+		tooltip="$session_line"
+	fi
+
+	printf '{"text": "%s", "tooltip": "%s", "class": "%s"}\n' "$icon" \
+		"$tooltip" "$( running && echo 'running' || echo 'stopped' )"
+}
+
+toggle() { if running; then stop; else start; fi; }
+
+case "$1" in
+	start)	start ;;
+	stop)   stop ;;
+	status) status ;;
+	toggle) toggle ;;
+	*)      echo "Usage: timer [start|stop|toggle|status]" ;;
+esac
