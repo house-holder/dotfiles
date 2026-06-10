@@ -34,6 +34,11 @@ stop() {
 		$(( (elapsed % 3600) / 60 )) $(( elapsed % 60 )) "$hrs_d"
 }
 
+reset() {
+	if running; then stop; fi
+	start
+}
+
 status() {
 	last_ts=$(last)
 	local icon tooltip
