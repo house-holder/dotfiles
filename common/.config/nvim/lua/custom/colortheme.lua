@@ -6,11 +6,11 @@ return {
       require('tokyonight').setup {
         styles = {
           keywords = {
-            italic = false,
+            -- italic = false,
             -- bold = true,
           },
           functions = {
-            -- bold = true,
+            bold = true,
           },
           variables = {},
           floats = 'normal',
