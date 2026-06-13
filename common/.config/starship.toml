@@ -22,7 +22,7 @@ format = " \\[[$symbol$branch](fg:#a3be8c)"
 
 [git_status]
 # format = "[$all_status$ahead_behind](fg:#d8dee9)"
-format = "( [$all_status](fg:#d8dee9)( [ $ahead_behind](fg:#88c0d0)))\\]"
+format = "( [$all_status](fg:#d8dee9)([$ahead_behind](fg:#88c0d0)))\\]"
 modified = "[!${count}](fg:#ebcb8b)"
 staged = "[+${count}](fg:#a3be8c)"
 untracked = "[?${count}](fg:#ebcb8b)"
@@ -30,8 +30,8 @@ deleted = "[✘${count}](fg:#bf616a)"
 renamed = "[»${count}](fg:#ebcb8b)"
 stashed = "[$${count}](fg:#88c0d0)"
 conflicted = "[=${count}](fg:#bf616a)"
-ahead = "[⇡${count}](fg:#88c0d0)"
-behind = "[⇣${count}](fg:#88c0d0)"
+ahead = "[${count}](fg:#88c0d0)"
+behind = "[${count}](fg:#88c0d0)"
 diverged = "[⇕](fg:#88c0d0)"
 
 [character]
