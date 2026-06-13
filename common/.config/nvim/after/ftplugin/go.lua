@@ -7,5 +7,3 @@ vim.api.nvim_set_hl(0, 'GoStructTag', { bold = true })
 
 vim.fn.matchadd('FmtSpecifier', '\\v\\%[-+#0 ]*\\d*\\.?\\d*[vTtbcdoOqxXUeEfFgGwsp%]')
 vim.fn.matchadd('GoStructTag', '\\v^\\s*[^/].*`\\zs\\w+:', 1)
-
-vim.treesitter.start()

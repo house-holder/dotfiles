@@ -16,34 +16,15 @@ require 'keymaps'
 require 'commands'
 require 'transparency'
 
-vim.filetype.add {
-  pattern = {
-    ['/etc/nginx/.*'] = 'nginx',
-    ['.*nginx.*%.conf'] = 'nginx',
-  },
-}
-
-local exclude = {
-  oil = true,
-  fidget = true,
-  toml = true,
-}
-
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(event)
-    if exclude[event.match] then
+    local lang = vim.treesitter.language.get_lang(event.match)
+    if not lang or lang == event.match then
       return
     end
     local ok = pcall(vim.treesitter.start)
     if not ok then
-      local lang = vim.treesitter.language.get_lang(event.match)
-      if lang then
-        local parser_exists = pcall(vim.treesitter.language.inspect, lang)
-        if not parser_exists then
-          vim.cmd('TSInstall ' .. lang)
-          print('TSInstall: "' .. lang .. '", restart for highlighting.')
-        end
-      end
+      pcall(vim.cmd, 'TSInstall ' .. lang)
     end
   end,
 })
