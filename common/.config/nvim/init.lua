@@ -16,16 +16,30 @@ require 'keymaps'
 require 'commands'
 require 'transparency'
 
+local ts_blocklist = {
+  ['oil'] = true,
+  ['neo-tree'] = true,
+  ['gitcommit'] = true,
+  ['neo-tree-popup'] = true,
+}
+
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(event)
-    local lang = vim.treesitter.language.get_lang(event.match)
-    if not lang or lang == event.match then
+    if ts_blocklist[event.match] then
       return
     end
-    local ok = pcall(vim.treesitter.start)
-    if not ok then
-      pcall(vim.cmd, 'TSInstall ' .. lang)
+    local lang = vim.treesitter.language.get_lang(event.match)
+    if not lang then
+      return
     end
+    local parser_ok = pcall(vim.treesitter.language.inspect, lang)
+    if not parser_ok then
+      pcall(function()
+        vim.cmd('TSInstall ' .. lang)
+      end)
+      return
+    end
+    pcall(vim.treesitter.start)
   end,
 })
 
