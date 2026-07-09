@@ -134,6 +134,16 @@ nginx-edit() {
     fi
 }
 
+export GROFF_NO_SGR=1
+export LESS="--RAW-CONTROL-CHARS"
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)
+export LESS_TERMCAP_se=$(tput sgr0)
+export LESS_TERMCAP_us=$(tput bold; tput setaf 4)
+export LESS_TERMCAP_ue=$(tput sgr0)
+
 function _nginx_edit_completion() {
     local cur="${COMP_WORDS[COMP_CWORD]}"
     local -a sites
