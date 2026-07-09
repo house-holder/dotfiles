@@ -1,3 +1,10 @@
 {
-	"format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {altimeter}|{temp}"
+    "airport": "KCGI",
+	"format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {alt}|{temp}",
+    "tempUnit": "F",
+    "modules": {
+        "metar": true,
+        "taf": true,
+        "discussion": true
+	}
 }
