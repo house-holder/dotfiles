@@ -10,7 +10,6 @@ vim.g.have_nerd_font = true
 -- NOTE: lazy items must come first
 require 'lazy-bootstrap'
 require 'lazy-plugins'
-
 require 'options'
 require 'keymaps'
 require 'commands'
@@ -18,9 +17,14 @@ require 'transparency'
 
 local ts_blocklist = {
   ['oil'] = true,
+  ['text'] = true,
+  ['fidget'] = true,
   ['neo-tree'] = true,
   ['gitcommit'] = true,
   ['neo-tree-popup'] = true,
+  ['blink-cmp-menu'] = true,
+  ['blink-cmp-signature'] = true,
+  ['blink-cmp-documentation'] = true,
 }
 
 vim.api.nvim_create_autocmd('FileType', {

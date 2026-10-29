@@ -21,6 +21,37 @@ return {
     end,
   },
   -- {
+  --   'tjdevries/colorbuddy.nvim',
+  --   priority = 1099,
+  --   config = function()
+  --     require 'colorbuddy'
+  --     -- styles = {
+  --     --   keywords = {
+  --     --     -- italic = false,
+  --     --     -- bold = true,
+  --     --   },
+  --     --   functions = {
+  --     --     bold = true,
+  --     --   },
+  --     --   variables = {},
+  --     --   floats = 'normal',
+  --     --   sidebars = 'dark',
+  --     -- },
+  --     vim.cmd.colorscheme 'gruvbuddy'
+  --   end,
+  -- },
+  -- {
+  --   'catppuccin/nvim',
+  --   name = 'catppuccin',
+  --   priority = 1000,
+  --   config = function()
+  --     require('catppuccin').setup {
+  --       flavour = 'mocha',
+  --     }
+  --     vim.cmd.colorscheme 'catppuccin'
+  --   end,
+  -- },
+  -- {
   --   'rebelot/kanagawa.nvim',
   --   lazy = false,
   --   priority = 1001,
