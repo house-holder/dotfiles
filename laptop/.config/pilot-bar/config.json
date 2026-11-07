@@ -1,0 +1,10 @@
+{
+    "airport": "KSTL",
+	"format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {alt}|{temp}",
+    "tempUnit": "F",
+    "modules": {
+        "metar": true,
+        "taf": true,
+        "discussion": true
+	}
+}
