@@ -107,32 +107,41 @@ gac() {
     fi
 }
 
-nginx-edit() {
-    if [ -z "$1" ]; then
-        echo "Usage: nginx-edit <site-name>"
-        echo "Available sites:"
-        ls /etc/nginx/sites-available/ 2>/dev/null | sed 's/^/  /'
-        return 1
-    fi
-
-    local site_file="/etc/nginx/sites-available/$1"
-
-    if [ ! -f "$site_file" ]; then
-        echo "Error: $site_file does not exist"
-        echo "Available sites:"
-        ls /etc/nginx/sites-available/ 2>/dev/null | sed 's/^/  /'
-        return 1
-    fi
-
-    echo "Editing nginx config for: $1"
-    sudo /usr/bin/nvim/ +'set ft=nginx' "$site_file"
-
-    read -p "Test nginx config and reload? [y/N] " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        sudo nginx -t && sudo systemctl reload nginx
-    fi
-}
+# nginx-edit() {
+#     if [ -z "$1" ]; then
+#         echo "Usage: nginx-edit <site-name>"
+#         echo "Available sites:"
+#         ls /etc/nginx/sites-available/ 2>/dev/null | sed 's/^/  /'
+#         return 1
+#     fi
+#
+#     local site_file="/etc/nginx/sites-available/$1"
+#
+#     if [ ! -f "$site_file" ]; then
+#         echo "Error: $site_file does not exist"
+#         echo "Available sites:"
+#         ls /etc/nginx/sites-available/ 2>/dev/null | sed 's/^/  /'
+#         return 1
+#     fi
+#
+#     echo "Editing nginx config for: $1"
+#     sudo /usr/bin/nvim/ +'set ft=nginx' "$site_file"
+#
+#     read -p "Test nginx config and reload? [y/N] " -n 1 -r
+#     echo
+#     if [[ $REPLY =~ ^[Yy]$ ]]; then
+#         sudo nginx -t && sudo systemctl reload nginx
+#     fi
+# }
+#
+# function _nginx_edit_completion() {
+#     local cur="${COMP_WORDS[COMP_CWORD]}"
+#     local -a sites
+#     mapfile -t sites < <(find /etc/nginx/sites-available/ -maxdepth 1 -type f -printf '%f\n' 2>/dev/null)
+#     COMPREPLY=("$(compgen -W "${sites[*]}" -- "$cur")")
+# }
+#
+# complete -F _nginx_edit_completion nginx-edit
 
 export GROFF_NO_SGR=1
 export LESS="--RAW-CONTROL-CHARS"
@@ -144,23 +153,15 @@ export LESS_TERMCAP_se=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput bold; tput setaf 4)
 export LESS_TERMCAP_ue=$(tput sgr0)
 
-function _nginx_edit_completion() {
-    local cur="${COMP_WORDS[COMP_CWORD]}"
-    local -a sites
-    mapfile -t sites < <(find /etc/nginx/sites-available/ -maxdepth 1 -type f -printf '%f\n' 2>/dev/null)
-    COMPREPLY=("$(compgen -W "${sites[*]}" -- "$cur")")
-}
-
-complete -F _nginx_edit_completion nginx-edit
 
 custom_path_add "$HOME/.config/zigvm/current"
 custom_path_add "$HOME/go/bin"
+custom_path_add "$HOME/.local/bin"
 custom_path_add "/usr/local/go/bin"
 custom_path_add "/home/kh/.opencode/bin"
 
 export EDITOR=nvim
 export BAT_THEME="Nord"
-export PATH="$HOME/.local/bin:$PATH"
 
 learn() {
     cd ~/personal/learn/"$1" || return
