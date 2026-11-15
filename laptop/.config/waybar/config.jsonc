@@ -7,6 +7,7 @@
 	"height": 30,
 
 	"modules-left": [
+		"backlight",
 		"pulseaudio",
 		"hyprland/workspaces",
 		"custom/wx"
@@ -17,11 +18,10 @@
 		"custom/zulu"
 	],
 	"modules-right": [
-		"bluetooth",
-		"cpu",
 		"memory",
-		"battery",
-		"network"
+		"cpu",
+		"network",
+		"battery"
 	],
 
 	"pulseaudio": {
@@ -29,7 +29,7 @@
 		"tooltip": false,
 		"on-click": "pavucontrol",
 		"on-click-right": "pamixer -t",
-		"scroll-step": 5,
+		"scroll-step": 2,
 		"format-muted": "{volume} 󰸈",
 		"format-icons": {
 			"headphone": "",
@@ -37,31 +37,34 @@
 			"default": "󰕿"
 		}
 	},
-	"battery": {
-	  "format": "{icon}{capacity}",
-	  "format-discharging": "{icon} {capacity} ↓{power:>1.0f}W",
-	  "format-charging": "{icon} {capacity} ↑{power:>1.0f}W",
-	  "format-plugged": "",
-	  "format-icons": {
-			"charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-			"default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-	  },
-	  "format-full": "󰂅",
-	  "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-	  "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-	  "interval": 10,
-	  "on-click": "omarchy-menu power",
-	  "states": {
-			"warning": 20,
-			"critical": 10
-	  }
-	},
-	"bluetooth": {
-	  "format": "",
-	  "format-disabled": "󰂲",
-	  "format-connected": "",
-	  "tooltip-format": "Devices connected: {num_connections}",
-	  "on-click": "blueberry"
+
+    "backlight": {
+        "format": "{icon} ",
+		"format-icons": ["","","","","","","","","","","","","",
+			"","",""],
+        "min-brightness": 1,
+		"tooltip": false
+        // "device": "acpi_video1",
+    },
+    "battery": {
+		"interval": 1,
+		"full-at-plugged": true,
+        "states": {
+            "high": 100,
+			"okay": 80,
+            "warn": 25,
+            "crit": 10
+        },
+        "format": " {icon}",
+        "format-full": " 󰂄",
+        "format-charging": "󱐋{icon}",
+        "format-plugged": "{icon}",
+        "format-alt": "{icon}{time}",
+		"tooltip-format": "Charge: {capacity}% ({power:0.1f}W)\nHealth: {health}%\n{timeTo} ({eta})",
+        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+    },
+	"clock": {
+		"format": "{:%H:%M}"
 	},
 
 	"clock#date": {
@@ -111,33 +114,26 @@
 		"exec-on-event": true
 	},
 
-	"custom/tmr": {
-		"exec": "~/.config/waybar/scripts/timer status",
-		"interval": 36,
-		"return-type": "json",
-		"on-click": "~/.config/waybar/scripts/timer toggle",
-		"tooltip": true
-	},
-
 	"cpu": {
-		"interval": 3,
-		"format": " {usage:2}%",
+		"interval": 1,
+		"format": "{usage:2}%",
 		"max-length": 10
 	},
 
 	"memory": {
 		"interval": 1,
-		"format": " {used:0.2f}G",
+		"format": "{used:0.1f}GiB ",
 		"max-length": 10
 	},
 
 	"network": {
 		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"format": "{icon}",
-		"format-wifi": "{icon}",
+		"format-wifi": "{icon} {essid}",
 		"format-ethernet": "{ipaddr} 󰌘",
-		"format-disconnected": "󰤮",
-		"tooltip-format-wifi": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"format-disabled": "󰤮",
+		"format-disconnected": "󰤫",
+		"tooltip-format-wifi": "{ipaddr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 		"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 		"tooltip-format-disconnected": "Disconnected",
 		"interval": 3,
@@ -145,13 +141,9 @@
 	},
 
 	"load": {
-		"interval": 10,
+		"interval": 3,
 		"format": "load: {load1}",
 		"max-length": 10
-	},
-
-	"temperature": {
-		"format": "{temperatureC}°C"
 	},
 
 	"hyprland/workspaces": {

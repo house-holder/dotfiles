@@ -4,4 +4,5 @@ return {
   autoCmd = vim.api.nvim_create_autocmd,
   auGrp = vim.api.nvim_create_augroup,
   findfile = vim.fn.findfile,
+  keymap = vim.keymap.set,
 }

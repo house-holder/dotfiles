@@ -27,6 +27,8 @@ keymap('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
 keymap('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
+keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diag' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {
