@@ -1,12 +1,7 @@
--- CUSTOM ALIASES
+-- ALIASES
 local bind = hl.bind
 local exec = hl.exec_cmd
 local exec_dsp = hl.dsp.exec_cmd
-
-local menu = "hyprlauncher"
-local browser = "firefox"
-local terminal = "ghostty"
-local fileManager = "dolphin"
 
 local locked = { locked = true }
 -- local repeating = { repeating = true }
@@ -14,22 +9,22 @@ local locked_repeating = { locked = true, repeating = true }
 
 -- MONITORS - https://wiki.hypr.land/configuring/core/monitors/
 hl.monitor({
-	output = "",
+	output = "eDP-1",
 	mode = "preferred",
 	position = "auto",
-	scale = "auto",
+	scale = "1.0",
 })
 
 -- AUTOSTART - https://wiki.hypr.land/configuring/core/autostart/
 hl.on("hyprland.start", function()
-	exec("waybar")
+	exec("sh -c 'while true; do waybar; sleep 1; done'")
+	exec("hyprlock || hyprctl dispatch exit")
 	exec("hyprpaper")
-	-- exec("waybar & hyprpaper & firefox")
 end)
 
 -- ENVs - https://wiki.hypr.land/configuring/core/environment-variables/
-hl.env("XCURSORsIZE", "24")
-hl.env("HYPRCURSORsIZE", "24")
+hl.env("XCURSORSIZE", "24")
+hl.env("HYPRCURSORSIZE", "24")
 
 -- PERMISSIONS - requires hyprland restart
 -- https://wiki.hypr.land/configuring/core/advanced-configuration/permissions/
@@ -58,7 +53,7 @@ hl.config({
 			},
 			inactive_border = "rgba(595959aa)",
 		},
-		resize_on_border = false,
+		resize_on_border = true,
 		allow_tearing = false,
 		layout = "dwindle",
 	},
@@ -68,7 +63,7 @@ hl.config({
 		rounding_power = 2,
 
 		active_opacity = 1.0,
-		inactive_opacity = 0.9,
+		inactive_opacity = 0.98,
 
 		shadow = {
 			enabled = true,
@@ -274,7 +269,7 @@ hl.config({
 -- MISC
 hl.config({
 	misc = {
-		force_default_wallpaper = -1,
+		force_default_wallpaper = 0,
 		disable_hyprland_logo = true,
 	},
 })
@@ -308,30 +303,31 @@ hl.gesture({
 	action = "workspace",
 })
 
--- KEYBINDINGS
+-- KEYBINDINGS -----------------------------------------------------------------
 local s = "SUPER"
 local window = hl.dsp.window
 
 local closeWindowBind = bind(s .. " + Q", window.close())
 closeWindowBind:set_enabled(true)
 
-local shutdown = "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || \z
-hyprctl dispatch 'hl.dsp.exit()'"
-
+local shutdown = "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown \z
+|| hyprctl dispatch 'hl.dsp.exit()'"
 bind(s .. " + M", exec_dsp(shutdown))
-
-bind(s .. " + R", exec_dsp(menu))
-bind(s .. " + E", exec_dsp(fileManager))
-bind(s .. " + Return", exec_dsp(terminal))
-bind(s .. " + Shift + B", exec_dsp(browser))
+bind(s .. " + R", exec_dsp("hyprlauncher"))
+bind(s .. " + E", exec_dsp("dolphin"))
+bind(s .. " + Return", exec_dsp("ghostty"))
+bind(s .. " + Shift + B", exec_dsp("firefox"))
 bind(s .. " + Shift + D", exec_dsp("discord"))
+bind(s .. " + Escape", exec_dsp("~/.local/bin/fuzzel-powermenu"))
 
 bind(s .. " + P", hl.dsp.window.pseudo())
 bind(s .. " + Shift + P", hl.dsp.layout("togglesplit"))
 bind(s .. " + V", hl.dsp.window.float({ action = "toggle" }))
+bind(s .. " + Ctrl + R", exec_dsp("killall waybar && waybar"))
+bind(s .. " + Ctrl + T", exec_dsp("killall hyprpaper && hyprpaper"))
 
-bind(s .. " + R", exec_dsp("killall waybar && waybar"))
-bind(s .. " + T", exec_dsp("killall hyprpaper && hyprpaper"))
+bind(s .. " + Shift + S", exec_dsp("hyprshot -m region --clipboard-only"))
+bind("F12", exec_dsp("grim - | wl-copy"))
 
 -- WINDOW FOCUS NAV
 bind(s .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -348,20 +344,21 @@ local rzD = { x = 0, y = inc, relative = true }
 local rzR = { x = inc, y = 0, relative = true }
 local rzL = { x = -inc, y = 0, relative = true }
 local rzU = { x = 0, y = -inc, relative = true }
-bind(s .. " + SHIFT + k", window.resize(rzU), resize_helper("up"))
-bind(s .. " + SHIFT + h", window.resize(rzL), resize_helper("left"))
-bind(s .. " + SHIFT + j", window.resize(rzD), resize_helper("down"))
-bind(s .. " + SHIFT + l", window.resize(rzR), resize_helper("right"))
+bind(s .. " + Shift + k", window.resize(rzU), resize_helper("up"))
+bind(s .. " + Shift + h", window.resize(rzL), resize_helper("left"))
+bind(s .. " + Shift + j", window.resize(rzD), resize_helper("down"))
+bind(s .. " + Shift + l", window.resize(rzR), resize_helper("right"))
 
 -- WORKSPACE CONTROLS
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
 	bind(s .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	bind(s .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	bind(s .. " + Shift + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 bind(s .. " + S", hl.dsp.workspace.toggle_special("magic"))
-bind(s .. " + SHIFT + S", window.move({ workspace = "special:magic" }))
+-- bind(s .. " + Shift + S", window.move({ workspace = "special:magic" }))
+bind(s .. " + F", window.fullscreen({ action = "toggle" }))
 bind(s .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 bind(s .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 bind(s .. " + mouse:272", window.drag(), { mouse = true })
@@ -383,8 +380,9 @@ bind(s .. " + Left", exec_dsp(vol_up), locked_repeating)
 -- BRIGHTNESS HANDLING
 local brightness_up = "brightnessctl -e4 -n2 set 2%+"
 local brightness_dn = "brightnessctl -e4 -n2 set 2%-"
-bind(s .. " + ALT + K", exec_dsp(brightness_dn), locked_repeating)
-bind(s .. " + ALT + J", exec_dsp(brightness_up), locked_repeating)
+
+bind(s .. " + Shift + Up", exec_dsp(brightness_up), locked_repeating)
+bind(s .. " + Shift + Down", exec_dsp(brightness_dn), locked_repeating)
 bind("XF86MonBrightnessUp", exec_dsp(brightness_up), locked_repeating)
 bind("XF86MonBrightnessDown", exec_dsp(brightness_dn), locked_repeating)
 

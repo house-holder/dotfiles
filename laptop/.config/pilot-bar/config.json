@@ -1,6 +1,7 @@
 {
     "airport": "KSTL",
-	"format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {alt}|{temp}",
+	"format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {alt} {temp}\u00B0F",
+
     "tempUnit": "F",
     "modules": {
         "metar": true,

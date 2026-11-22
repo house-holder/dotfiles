@@ -13,6 +13,10 @@ cd() {
 	fi
 }
 
+launch() {
+	setsid -f "$@" >/dev/null 2>&1
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

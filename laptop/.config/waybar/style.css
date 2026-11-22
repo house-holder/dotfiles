@@ -1,11 +1,8 @@
 * {
 	border: none;
-	/* font-family: "JetBrainsMono Nerd Font"; */
-	/* font-family: "Lilex Nerd Font Mono"; */
 	color: #565f89;
-	font-size: 14px;
-	font-family: mono;
-	min-height: 30px;
+	font-size: 18px;
+	min-height: 40px;
 }
 
 .modules-left {
@@ -17,6 +14,7 @@
 }
 
 .modules-center {
+	background: rgba(26, 27, 38, 0.72);
 	margin-right: 0px;
 }
 
@@ -25,71 +23,78 @@ window#waybar {
 }
 
 tooltip {
-	background: rgba(43, 48, 59, 0.9);
+	font-size: 10px;
+	font-family: "Lilex Nerd Font Mono";
+	background: rgba(23, 28, 59, 0.92);
 	border: 1px solid rgba(100, 114, 125, 0.9)
 }
 
 tooltip label {
-	color: white;
+	color: #9aa5ce;
 }
 
 #workspaces {
+	font-family: "Lilex Nerd Font Mono";
 	margin: 0 5px;
 }
 
 #workspaces button {
 	all: initial;
-	padding: 0 3px;
-	min-width: 8px;
+	padding: 0;
+	min-width: 20px;
 }
 
 #workspaces button.empty {
-	opacity: 0.35;
+	opacity: 0.25;
 }
 
 #custom-wx {
+	font-size: 18px;
 	font-family: mono;
-	padding: 0px 4px;
-	font-size: 14px;
-	font-weight: 400;
+	padding: 0px 2px;
+	font-weight: 600;
+}
+
+#clock, #clock.date, #custom-zulu {
+	color: #565f89;
+	font-family: "Lilex Nerd Font Mono";
 }
 
 #clock {
-	color: #9aa5ce; /* #7dcfff; */
-	font-size: 14px;
-	font-weight: 400;
-	font-family: mono;
-	padding: 0px 0px 0px 0px;
+	color: #9aa5ce;
+	font-size: 30px;
+	font-weight: 800;
+	padding: 0px 14px;
 }
 
 #clock.date, #custom-zulu {
-	color: #565f89;
-	padding: 0px 25px 0px 20px;
-	font-size: 14px;
-	font-weight: 400;
+	padding: 0 7px;
+	font-size: 20px;
+	font-weight: 600;
+	min-width: 72px;
 }
 
 #temperature, #cpu, #memory {
-	font-size: 12px;
+	font-family: mono;
 	margin: 0 5px;
 }
 
 #temperature {
-	color: #3e4563;
-	margin-right: 8px;
+	margin-left: 10px;
+	margin-right: 5px;
 }
 
 #cpu {
+	margin-left: 10px;
 	margin-right: 5px;
 }
 
 #memory {
-	color: #3e4563;
 }
 
 #network {
-	font-size: 12px;
-	padding: 0 5px 0 10px;
+	font-size: 18px;
+	padding: 0 0px 0 10px;
 }
 #network.disabled {
 	color: #ff0000;
@@ -100,38 +105,36 @@ tooltip label {
 }
 
 #battery {
-	font-size: 18px;
-	padding: 0px 7px 0px 0px;
+	font-size: 26px;
+	padding: 0px 2px 0px 0px;
 }
 
 #backlight {
-	font-size: 16px;
-	padding: 0px 0px 0px 5px;
+	font-size: 20px;
+	padding: 0px 0px 0px 12px;
 }
 
-#battery.high {
-	color: #565f89;
+#battery.norm {
+	color: #9aa5ce;
 }
-
-#battery.okay {
-	/* color: #f8c128; */
-}
-
 #battery.warn {
 	color: #f8c128;
 }
-
 #battery.crit {
-	color: #ff0000;
+	color: #ff9e64;
 }
-
 #battery.charging {
 	color: #9ece6a;
 }
 
 #pulseaudio {
 	color: #9aa5ce;
-	padding: 0 5px;
+	font-size: 18px;
+	padding: 0 0 0 5px;
+}
+
+#pulseaudio.muted {
+	color: #e0af68;
 }
 
 #mode {
