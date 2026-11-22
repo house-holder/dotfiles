@@ -1,38 +1,54 @@
+/* ── Palette ─────────────────────────────────────────── */
+@define-color fg          #9aa5ce;
+@define-color fg_dim      #565f89;
+@define-color bg          #1a1b26;
+@define-color tip_bg      #1a1b26;
+@define-color tip_border  #7aa2f7;
+
+@define-color green       #9ece6a;
+@define-color amber       #f8c128;
+@define-color red         #ff0000;
+
+@define-color vfr         #9ece6a;
+@define-color mvfr        #7aa2f7;
+@define-color ifr         #f7768e;
+@define-color lifr        #bb9af7;
+
+/* ── Base ────────────────────────────────────────────── */
 * {
 	border: none;
-	color: #565f89;
+	color: @fg_dim;
 	font-size: 18px;
+}
+
+window#waybar {
+	background: alpha(@bg, 0.75);
 	min-height: 40px;
 }
 
-.modules-left {
-	margin-right: 0px;
-}
-
+.modules-left,
 .modules-right {
 	margin-right: 0px;
 }
 
 .modules-center {
-	background: rgba(26, 27, 38, 0.72);
+	background: alpha(@bg, 0.72);
 	margin-right: 0px;
 }
 
-window#waybar {
-	background: rgba(26, 27, 38, 0.65);
-}
-
+/* ── Tooltip ─────────────────────────────────────────── */
 tooltip {
 	font-size: 10px;
 	font-family: "Lilex Nerd Font Mono";
-	background: rgba(23, 28, 59, 0.92);
-	border: 1px solid rgba(100, 114, 125, 0.9)
+	background: alpha(@tip_bg, 0.93);
+	border: 3px solid alpha(@tip_border, 0.5);
 }
 
 tooltip label {
-	color: #9aa5ce;
+	color: @fg;
 }
 
+/* ── Workspaces ──────────────────────────────────────── */
 #workspaces {
 	font-family: "Lilex Nerd Font Mono";
 	margin: 0 5px;
@@ -48,20 +64,14 @@ tooltip label {
 	opacity: 0.25;
 }
 
-#custom-wx {
-	font-size: 18px;
-	font-family: mono;
-	padding: 0px 2px;
-	font-weight: 600;
-}
-
+/* ── Clocks ──────────────────────────────────────────── */
 #clock, #clock.date, #custom-zulu {
-	color: #565f89;
+	color: @fg_dim;
 	font-family: "Lilex Nerd Font Mono";
 }
 
 #clock {
-	color: #9aa5ce;
+	color: @fg;
 	font-size: 30px;
 	font-weight: 800;
 	padding: 0px 14px;
@@ -74,87 +84,99 @@ tooltip label {
 	min-width: 72px;
 }
 
+/* ── System ──────────────────────────────────────────── */
 #temperature, #cpu, #memory {
 	font-family: mono;
 	margin: 0 5px;
 }
 
-#temperature {
+#temperature, #cpu {
 	margin-left: 10px;
 	margin-right: 5px;
-}
-
-#cpu {
-	margin-left: 10px;
-	margin-right: 5px;
-}
-
-#memory {
 }
 
 #network {
 	font-size: 18px;
 	padding: 0 0px 0 10px;
 }
-#network.disabled {
-	color: #ff0000;
-}
 
-#network.disconnected {
-	color: #f8c128;
-}
+#network.disabled     { color: @red; }
+#network.disconnected { color: @amber; }
 
 #battery {
 	font-size: 26px;
+	font-weight: 600;
 	padding: 0px 2px 0px 0px;
 }
+
+#battery.norm     { color: @fg; }
+#battery.warn     { color: @amber; }
+#battery.crit     { color: @red; }
+#battery.charging { color: @green; }
 
 #backlight {
 	font-size: 20px;
 	padding: 0px 0px 0px 12px;
 }
 
-#battery.norm {
-	color: #9aa5ce;
-}
-#battery.warn {
-	color: #f8c128;
-}
-#battery.crit {
-	color: #ff9e64;
-}
-#battery.charging {
-	color: #9ece6a;
-}
-
+/* ── Audio ───────────────────────────────────────────── */
 #pulseaudio {
-	color: #9aa5ce;
-	font-size: 18px;
-	padding: 0 0 0 5px;
+	color: @fg;
+	font-size: 20px;
+	padding: 0 0 0px 5px;
 }
-
 #pulseaudio.muted {
-	color: #e0af68;
+	color: @amber;
 }
 
+#pulseaudio-slider {
+	min-height: 0;
+	padding: 0;
+	margin: 2px 2px;
+}
+
+#pulseaudio-slider slider {
+	min-height: 0;
+	min-width: 0;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+	min-width: 4px;
+	min-height: 34px;
+	border-radius: 0;
+	background-color: alpha(@fg_dim, 0.2);
+}
+
+#pulseaudio-slider highlight {
+	min-height: 0;
+	border-radius: 0;
+	background-color: @fg;
+}
+
+#pulseaudio-slider.muted highlight {
+	background-color: @amber;
+}
+
+/* ── Weather (pilot-bar) ─────────────────────────────── */
+#custom-wx {
+	font-size: 18px;
+	font-family: mono;
+	padding: 0px 2px;
+	font-weight: 600;
+}
+
+#custom-wx.vfr  { color: @vfr; }
+#custom-wx.mvfr { color: @mvfr; }
+#custom-wx.ifr  { color: @ifr; }
+#custom-wx.lifr { color: @lifr; }
+
+/* ── Misc ────────────────────────────────────────────── */
 #mode {
 	padding: 0 0px;
-}
-
-#custom-wx.vfr {
-	color: #9ece6a;
-}
-
-#custom-wx.mvfr {
-	color: #0080ff;
-}
-
-#custom-wx.ifr {
-	color: #ff0000;
-}
-
-#custom-wx.lifr {
-	color: #ff00ff;
 }
 
 @keyframes blink {

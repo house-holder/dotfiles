@@ -8,6 +8,7 @@
 
 	"modules-left": [
 		"pulseaudio",
+		"pulseaudio/slider",
 		"hyprland/workspaces",
 		"custom/wx"
 	],
@@ -27,18 +28,27 @@
 
 	"pulseaudio": {
 		"format": "{icon}",
-		"format-alt": "v={volume:02}",
 		"tooltip": true,
 		"tooltip-format": "{volume}",
 		"on-click": "pavucontrol",
 		"on-click-right": "pamixer -t",
 		"scroll-step": 5,
-		"format-muted": "",
 		"format-icons": {
-			"headphone": "",
-			"headset": "",
-			"default": ["","","",""]
+			"default": "",
+			"default-muted": "",
+			"headset": "󰋋",
+			"headset-muted": "󰟎",
+			"headphone": "󰋋",
+			"headphone-muted": "󰟎",
 		}
+	},
+
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 100,
+		"zero-on-mute": false,
+		"orientation": "vertical",
+		"on-click": "pavucontrol"
 	},
 
     "backlight": {
