@@ -1,4 +1,4 @@
-font-size = 18
+font-size = 16
 font-family = Lilex Nerd Font Mono
 
 theme = TokyoNight Moon
@@ -15,6 +15,8 @@ cursor-style-blink = false
 cursor-click-to-move = true
 
 mouse-hide-while-typing = true
+clipboard-write = allow
+clipboard-read = ask
 shell-integration-features = ssh-env,ssh-terminfo
 
 keybind = super+shift+t=new_tab

@@ -67,9 +67,9 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.config({
 	general = {
 		layout = "dwindle",
-		gaps_in = 3,
-		gaps_out = 3,
-		border_size = 3,
+		gaps_in = 1,
+		gaps_out = 1,
+		border_size = 2,
 		col = {
 			active_border = {
 				colors = {
@@ -86,21 +86,21 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 10,
-		rounding_power = 3,
-		active_opacity = 1.0,
-		inactive_opacity = 0.93,
+		rounding = 5,
+		rounding_power = 5,
+		active_opacity = 0.98,
+		inactive_opacity = 0.95,
 
 		shadow = {
 			enabled = true,
 			range = 15,
-			render_power = 5,
+			render_power = 3,
 			color = 0xff1a1a1a,
 		},
 
 		blur = {
-			enabled = false,
-			size = 5,
+			enabled = true,
+			size = 1,
 			passes = 1,
 			vibrancy = 0.9,
 		},
@@ -288,6 +288,7 @@ hl.device({
 ---------------------
 local s = "SUPER"
 
+hl.bind(s .. " + ESCAPE", hl.dsp.exec_cmd("~/.local/bin/powermenu"))
 hl.bind(s .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(s .. " + SHIFT + B", hl.dsp.exec_cmd(browser))
 hl.bind(s .. " + SHIFT + D", hl.dsp.exec_cmd("discord"))
@@ -406,4 +407,13 @@ hl.window_rule({
 	match = { class = "hyprland-run" },
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+hl.window_rule({
+	name = "opaque-app",
+	match = {
+		class = "pocket-pilots",
+	},
+	opacity = "1.0 override 1.0 override",
+	no_blur = true,
 })

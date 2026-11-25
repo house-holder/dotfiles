@@ -21,6 +21,7 @@ local ts_blocklist = {
   ['fidget'] = true,
   ['neo-tree'] = true,
   ['gitcommit'] = true,
+  ['oil_preview'] = true,
   ['neo-tree-popup'] = true,
   ['blink-cmp-menu'] = true,
   ['blink-cmp-signature'] = true,
