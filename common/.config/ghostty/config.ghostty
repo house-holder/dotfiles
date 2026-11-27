@@ -1,21 +1,23 @@
-font-size = 13
+font-size = 16
 font-family = "Lilex Nerd Font"
 # font-family = "Iosevka Nerd Font"
 font-feature = +calt, +dlig, +liga
 # == !== => -> <- // :=
 
-theme = TokyoNight Moon
+theme = "TokyoNight Moon"
 window-padding-x = 5
 window-padding-y = 5
-window-decoration = auto
+# window-decoration = auto
 
-background = 1a1b26
-background-blur = 5
+background = #1a1b26
+background-blur = true
 background-opacity = 0.95
 
 cursor-style = bar
 cursor-style-blink = false
 cursor-click-to-move = true
-
 mouse-hide-while-typing = true
+
+clipboard-write = allow
+clipboard-read = allow
 shell-integration-features = ssh-env,ssh-terminfo
