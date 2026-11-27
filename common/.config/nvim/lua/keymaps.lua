@@ -29,6 +29,29 @@ keymap('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 keymap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diag' })
 
+-- [count]<leader>fl{char}: fill line to column (default 80) with {char}
+-- <CR> or <Space> uses '-', <Esc> cancels
+keymap('n', '<leader>fl', function()
+  local width = vim.v.count > 0 and vim.v.count or 80
+  local char = vim.fn.getcharstr()
+  if char == '\27' then
+    return
+  end
+  if char == '\r' or char == ' ' then
+    char = '-'
+  end
+
+  local line = vim.api.nvim_get_current_line():gsub('%s+$', '')
+  if line ~= '' then
+    line = line .. ' '
+  end
+
+  local fill = width - vim.fn.strdisplaywidth(line)
+  if fill > 0 then
+    vim.api.nvim_set_current_line(line .. char:rep(fill))
+  end
+end, { desc = 'Fill line with char to column' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {

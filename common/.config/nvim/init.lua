@@ -17,6 +17,7 @@ require 'transparency'
 
 local ts_blocklist = {
   ['oil'] = true,
+  ['man'] = true,
   ['text'] = true,
   ['fidget'] = true,
   ['neo-tree'] = true,
@@ -24,6 +25,8 @@ local ts_blocklist = {
   ['oil_preview'] = true,
   ['neo-tree-popup'] = true,
   ['blink-cmp-menu'] = true,
+  ['TelescopePrompt'] = true,
+  ['TelescopeResults'] = true,
   ['blink-cmp-signature'] = true,
   ['blink-cmp-documentation'] = true,
 }
@@ -49,3 +52,8 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.g.init_load_complete = true
+
+vim.filetype.add {
+  extension = { ghostty = 'ghostty' },
+  pattern = { ['.*/ghostty/config'] = 'ghostty' },
+}
