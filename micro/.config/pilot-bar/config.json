@@ -1,3 +1,4 @@
 {
-  "format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {altimeter}/{temp}"
+  "format": "({age}m) {winds} {cloud-icon} {clouds} {wx} {vis} {alt}/{temp}",
+  "tempUnit": "F"
 }

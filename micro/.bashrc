@@ -22,6 +22,15 @@ cd() {
 	fi
 }
 
+custom_path_add() {
+	local new_path="$1"
+	if [[ ":$PATH:" != *":$new_path:"* ]]; then
+		export PATH="$PATH:$new_path"
+	fi
+}
+
+custom_path_add "$HOME/.scripts"
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
