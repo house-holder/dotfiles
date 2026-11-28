@@ -20,6 +20,7 @@ local ts_blocklist = {
   ['man'] = true,
   ['text'] = true,
   ['fidget'] = true,
+  ['ghostty'] = true,
   ['neo-tree'] = true,
   ['gitcommit'] = true,
   ['oil_preview'] = true,
